@@ -1,0 +1,1477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>wand.drawing — Drawings — Wand 0.4.0</title>
+<link href="../_static/wand.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="../_static/jquery.js" type="text/javascript"></script>
+<script src="../_static/underscore.js" type="text/javascript"></script>
+<script src="../_static/doctools.js" type="text/javascript"></script>
+<link href="../index.html" rel="top" title="Wand 0.4.0"/>
+<link href="../wand.html" rel="up" title="wand — Simple MagickWand API binding for Python"/>
+<link href="sequence.html" rel="next" title="wand.sequence — Sequences"/>
+<link href="font.html" rel="prev" title="wand.font — Fonts"/>
+<link href="../_static/small_flask.css" media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="related">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="../genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="../py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="sequence.html" title="wand.sequence — Sequences">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="font.html" title="wand.font — Fonts">previous</a> |</li>
+<li><a href="../index.html">Wand</a> »</li>
+<li><a accesskey="U" href="../wand.html"><tt class="docutils literal"><span class="pre">wand</span></tt> — Simple MagickWand API binding for Python</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body">
+<span class="target" id="module-wand.drawing"></span><div class="section" id="wand-drawing-drawings"><a name="//apple_ref/cpp/Module/wand.drawing"></a>
+<h1><a class="reference internal" href="#module-wand.drawing" title="wand.drawing"><tt class="xref py py-mod docutils literal"><span class="pre">wand.drawing</span></tt></a> — Drawings<a class="headerlink" href="#wand-drawing-drawings" title="Permalink to this headline">¶</a></h1>
+<p>The module provides some vector drawing functions.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<dl class="data">
+<dt id="wand.drawing.CLIP_PATH_UNITS"><a name="//apple_ref/cpp/Value/wand.drawing.CLIP_PATH_UNITS"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">CLIP_PATH_UNITS</tt><em class="property"> = ('undefined_path_units', 'user_space', 'user_space_on_use', 'object_bounding_box')</em><a class="headerlink" href="#wand.drawing.CLIP_PATH_UNITS" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of clip path units</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined_path_units'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'user_space'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'user_space_on_use'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'object_bounding_box'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.FILL_RULE_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.FILL_RULE_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">FILL_RULE_TYPES</tt><em class="property"> = ('undefined', 'evenodd', 'nonzero')</em><a class="headerlink" href="#wand.drawing.FILL_RULE_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of fill-rule types.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'evenodd'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'nonzero'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.FONT_METRICS_ATTRIBUTES"><a name="//apple_ref/cpp/Value/wand.drawing.FONT_METRICS_ATTRIBUTES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">FONT_METRICS_ATTRIBUTES</tt><em class="property"> = ('character_width', 'character_height', 'ascender', 'descender', 'text_width', 'text_height', 'maximum_horizontal_advance', 'x1', 'y1', 'x2', 'y2', 'x', 'y')</em><a class="headerlink" href="#wand.drawing.FONT_METRICS_ATTRIBUTES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The attribute names of font metrics.</p>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.GRAVITY_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.GRAVITY_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">GRAVITY_TYPES</tt><em class="property"> = ('forget', 'north_west', 'north', 'north_east', 'west', 'center', 'east', 'south_west', 'south', 'south_east', 'static')</em><a class="headerlink" href="#wand.drawing.GRAVITY_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of text gravity types.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'forget'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'north_west'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'north'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'north_east'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'west'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'center'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'east'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'south_west'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'south'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'south_east'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'static'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.LINE_CAP_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.LINE_CAP_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">LINE_CAP_TYPES</tt><em class="property"> = ('undefined', 'butt', 'round', 'square')</em><a class="headerlink" href="#wand.drawing.LINE_CAP_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of LineCap types</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'butt'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'round'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'square'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.LINE_JOIN_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.LINE_JOIN_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">LINE_JOIN_TYPES</tt><em class="property"> = ('undefined', 'miter', 'round', 'bevel')</em><a class="headerlink" href="#wand.drawing.LINE_JOIN_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of LineJoin types</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'miter'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'round'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'bevel'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.PAINT_METHOD_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.PAINT_METHOD_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">PAINT_METHOD_TYPES</tt><em class="property"> = ('undefined', 'point', 'replace', 'floodfill', 'filltoborder', 'reset')</em><a class="headerlink" href="#wand.drawing.PAINT_METHOD_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of paint method types.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'point'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'replace'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'floodfill'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'filltoborder'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'reset'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.STRETCH_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.STRETCH_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">STRETCH_TYPES</tt><em class="property"> = ('undefined', 'normal', 'ultra_condensed', 'extra_condensed', 'condensed', 'semi_condensed', 'semi_expanded', 'expanded', 'extra_expanded', 'ultra_expanded', 'any')</em><a class="headerlink" href="#wand.drawing.STRETCH_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of stretch types for fonts</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'normal'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'ultra_condensed'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'extra_condensed'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'condensed'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'semi_condensed'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'semi_expanded'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'expanded'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'extra_expanded'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'ultra_expanded'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'any'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.STYLE_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.STYLE_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">STYLE_TYPES</tt><em class="property"> = ('undefined', 'normal', 'italic', 'oblique', 'any')</em><a class="headerlink" href="#wand.drawing.STYLE_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of style types for fonts</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined;</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'normal'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'italic'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'oblique'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'any'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.TEXT_ALIGN_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.TEXT_ALIGN_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">TEXT_ALIGN_TYPES</tt><em class="property"> = ('undefined', 'left', 'center', 'right')</em><a class="headerlink" href="#wand.drawing.TEXT_ALIGN_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of text align types.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'left'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'center'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'right'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.TEXT_DECORATION_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.TEXT_DECORATION_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">TEXT_DECORATION_TYPES</tt><em class="property"> = ('undefined', 'no', 'underline', 'overline', 'line_through')</em><a class="headerlink" href="#wand.drawing.TEXT_DECORATION_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of text decoration types.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'no'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'underline'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'overline'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'line_through'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="data">
+<dt id="wand.drawing.TEXT_DIRECTION_TYPES"><a name="//apple_ref/cpp/Value/wand.drawing.TEXT_DIRECTION_TYPES"></a>
+<tt class="descclassname">wand.drawing.</tt><tt class="descname">TEXT_DIRECTION_TYPES</tt><em class="property"> = ('undefined', 'right_to_left', 'left_to_right')</em><a class="headerlink" href="#wand.drawing.TEXT_DIRECTION_TYPES" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) The list of text direction types.</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'right_to_left'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'left_to_right'</span></tt></li>
+</ul>
+</dd></dl>
+<dl class="class">
+<dt id="wand.drawing.Drawing"><a name="//apple_ref/cpp/Class/wand.drawing.Drawing"></a>
+<em class="property">class </em><tt class="descclassname">wand.drawing.</tt><tt class="descname">Drawing</tt><big>(</big><em>drawing=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Drawing object.  It maintains several vector drawing instructions
+and can get drawn into zero or more <a class="reference internal" href="image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> objects
+by calling it.</p>
+<p>For example, the following code draws a diagonal line to the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>drawing</strong> (<a class="reference internal" href="#wand.drawing.Drawing" title="wand.drawing.Drawing"><tt class="xref py py-class docutils literal"><span class="pre">Drawing</span></tt></a>) – an optional drawing object to clone.
+use <a class="reference internal" href="#wand.drawing.Drawing.clone" title="wand.drawing.Drawing.clone"><tt class="xref py py-meth docutils literal"><span class="pre">clone()</span></tt></a> method rather than this parameter</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<dl class="method">
+<dt id="wand.drawing.Drawing.affine"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.affine"></a>
+<tt class="descname">affine</tt><big>(</big><em>matrix</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.affine" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusts the current affine transformation matrix with the specified
+affine transformation matrix. Note that the current affine transform is
+adjusted rather than replaced.</p>
+<div class="highlight-text"><div class="highlight"><pre>                                  | sx  rx  0 |
+| x', y', 1 |  =  | x, y, 1 |  *  | ry  sy  0 |
+                                  | tx  ty  1 |
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>matrix</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Sequence</span></tt></a>) – a list of <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a> to define affine matrix.
+<cite>[sx, rx, ry, sy, tx, ty]</cite></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.arc"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.arc"></a>
+<tt class="descname">arc</tt><big>(</big><em>start</em>, <em>end</em>, <em>degree</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a arc using the current <a class="reference internal" href="#wand.drawing.Drawing.stroke_color" title="wand.drawing.Drawing.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_color</span></tt></a>,
+<a class="reference internal" href="#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a>, and <a class="reference internal" href="#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents starting x and y of the arc</li>
+<li><strong>end</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents ending x and y of the arc</li>
+<li><strong>degree</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents starting degree, and ending degree</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.bezier"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.bezier"></a>
+<tt class="descname">bezier</tt><big>(</big><em>points=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.bezier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a bezier curve through a set of points on the image, using
+the specified array of coordinates.</p>
+<p>At least four points should be given to complete a bezier path.
+The first &amp; forth point being the start &amp; end point, and the second
+&amp; third point controlling the direction &amp; curve.</p>
+<p>Example bezier on <tt class="docutils literal"><span class="pre">image</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">40</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="c"># Start point</span>
+              <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span> <span class="c"># First control</span>
+              <span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="c"># Second control</span>
+              <span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">40</span><span class="p">)]</span> <span class="c"># End point</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">'#000'</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">'#fff'</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">bezier</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">list</span></tt></a>) – list of x,y tuples</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.border_color"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.border_color"></a>
+<tt class="descname">border_color</tt><a class="headerlink" href="#wand.drawing.Drawing.border_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference internal" href="color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a>) the current border color. It also can
+be set. This attribute controls the behavior of
+<a class="reference internal" href="#wand.drawing.Drawing.color" title="wand.drawing.Drawing.color"><tt class="xref py py-meth docutils literal"><span class="pre">color()</span></tt></a> during <tt class="docutils literal"><span class="pre">'filltoborder'</span></tt>
+operation.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.circle"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.circle"></a>
+<tt class="descname">circle</tt><big>(</big><em>origin</em>, <em>perimeter</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.circle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a circle from <tt class="docutils literal"><span class="pre">origin</span></tt> to <tt class="docutils literal"><span class="pre">perimeter</span></tt></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>origin</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents origin x and y of circle</li>
+<li><strong>perimeter</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents perimeter x and y of circle</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.clip_rule"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.clip_rule"></a>
+<tt class="descname">clip_rule</tt><a class="headerlink" href="#wand.drawing.Drawing.clip_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The current clip rule. It also can be set.
+It’s a string value from <a class="reference internal" href="#wand.drawing.FILL_RULE_TYPES" title="wand.drawing.FILL_RULE_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">FILL_RULE_TYPES</span></tt></a> list.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.clip_units"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.clip_units"></a>
+<tt class="descname">clip_units</tt><a class="headerlink" href="#wand.drawing.Drawing.clip_units" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The current clip units. It also can be set.
+It’s a string value from <a class="reference internal" href="#wand.drawing.CLIP_PATH_UNITS" title="wand.drawing.CLIP_PATH_UNITS"><tt class="xref py py-const docutils literal"><span class="pre">CLIP_PATH_UNITS</span></tt></a> list.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.clone"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.clone"></a>
+<tt class="descname">clone</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.clone" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copies a drawing object.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">a duplication</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference internal" href="#wand.drawing.Drawing" title="wand.drawing.Drawing"><tt class="xref py py-class docutils literal"><span class="pre">Drawing</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.color"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.color"></a>
+<tt class="descname">color</tt><big>(</big><em>x=None</em>, <em>y=None</em>, <em>paint_method='undefined'</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a color on the image using current fill color, starting
+at specified position &amp; method.</p>
+<p>Available methods in <a class="reference internal" href="#wand.drawing.PAINT_METHOD_TYPES" title="wand.drawing.PAINT_METHOD_TYPES"><tt class="xref py py-class docutils literal"><span class="pre">wand.drawing.PAINT_METHOD_TYPES</span></tt></a>:</p>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'point'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'replace'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'floodfill'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'filltoborder'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'reset'</span></tt></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.comment"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.comment"></a>
+<tt class="descname">comment</tt><big>(</big><em>message=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.comment" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a comment to the vector stream.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>message</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – the comment to set.</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.composite"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.composite"></a>
+<tt class="descname">composite</tt><big>(</big><em>operator</em>, <em>left</em>, <em>top</em>, <em>width</em>, <em>height</em>, <em>image</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.composite" title="Permalink to this definition">¶</a></dt>
+<dd><p>Composites an image onto the current image, using the specified
+composition operator, specified position, and at the specified size.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>operator</strong> – the operator that affects how the composite
+is applied to the image.  available values
+can be found in the <tt class="xref py py-const docutils literal"><span class="pre">COMPOSITE_OPERATORS</span></tt>
+list</li>
+<li><strong>type</strong> – <tt class="xref py py-const docutils literal"><span class="pre">COMPOSITE_OPERATORS</span></tt></li>
+<li><strong>left</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the column offset of the composited drawing source</li>
+<li><strong>top</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the row offset of the composited drawing source</li>
+<li><strong>width</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the total columns to include in the composited source</li>
+<li><strong>height</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the total rows to include in the composited source</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.draw"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.draw"></a>
+<tt class="descname">draw</tt><big>(</big><em>image</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.draw" title="Permalink to this definition">¶</a></dt>
+<dd><p>Renders the current drawing into the <tt class="docutils literal"><span class="pre">image</span></tt>.  You can simply
+call <a class="reference internal" href="#wand.drawing.Drawing" title="wand.drawing.Drawing"><tt class="xref py py-class docutils literal"><span class="pre">Drawing</span></tt></a> instance rather than calling this method.
+That means the following code which calls <a class="reference internal" href="#wand.drawing.Drawing" title="wand.drawing.Drawing"><tt class="xref py py-class docutils literal"><span class="pre">Drawing</span></tt></a> object
+itself:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">drawing</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>is equivalent to the following code which calls <a class="reference internal" href="#wand.drawing.Drawing.draw" title="wand.drawing.Drawing.draw"><tt class="xref py py-meth docutils literal"><span class="pre">draw()</span></tt></a> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">drawing</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>image</strong> (<a class="reference internal" href="image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a>) – the image to be drawn</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.ellipse"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.ellipse"></a>
+<tt class="descname">ellipse</tt><big>(</big><em>origin</em>, <em>radius</em>, <em>rotation=(0</em>, <em>360)</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.ellipse" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a ellipse at <tt class="docutils literal"><span class="pre">origin</span></tt> with independent x &amp; y <tt class="docutils literal"><span class="pre">radius</span></tt>.
+Ellipse can be partial by setting start &amp; end <tt class="docutils literal"><span class="pre">rotation</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>origin</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents origin x and y of circle</li>
+<li><strong>radius</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents radius x and radius y of circle</li>
+<li><strong>rotation</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents start and end of ellipse.
+Default (0,360)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.fill_color"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.fill_color"></a>
+<tt class="descname">fill_color</tt><a class="headerlink" href="#wand.drawing.Drawing.fill_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference internal" href="color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a>) The current color to fill.
+It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.fill_opacity"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.fill_opacity"></a>
+<tt class="descname">fill_opacity</tt><a class="headerlink" href="#wand.drawing.Drawing.fill_opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) The current fill opacity.
+It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.fill_rule"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.fill_rule"></a>
+<tt class="descname">fill_rule</tt><a class="headerlink" href="#wand.drawing.Drawing.fill_rule" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The current fill rule. It can also be set.
+It’s a string value from <a class="reference internal" href="#wand.drawing.FILL_RULE_TYPES" title="wand.drawing.FILL_RULE_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">FILL_RULE_TYPES</span></tt></a> list.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.font_resolution"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.font_resolution"></a>
+<tt class="descname">font_resolution</tt><a class="headerlink" href="#wand.drawing.Drawing.font_resolution" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Sequence</span></tt></a>) The current font resolution. It also
+can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.font_size"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.font_size"></a>
+<tt class="descname">font_size</tt><a class="headerlink" href="#wand.drawing.Drawing.font_size" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) The font size.  It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.font_stretch"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.font_stretch"></a>
+<tt class="descname">font_stretch</tt><a class="headerlink" href="#wand.drawing.Drawing.font_stretch" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The current font family. It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.font_style"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.font_style"></a>
+<tt class="descname">font_style</tt><a class="headerlink" href="#wand.drawing.Drawing.font_style" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The current font style. It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.font_weight"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.font_weight"></a>
+<tt class="descname">font_weight</tt><a class="headerlink" href="#wand.drawing.Drawing.font_weight" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>) The current font weight.
+It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.get_font_metrics"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.get_font_metrics"></a>
+<tt class="descname">get_font_metrics</tt><big>(</big><em>image</em>, <em>text</em>, <em>multiline=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.get_font_metrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>Queries font metrics from the given <tt class="docutils literal"><span class="pre">text</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>image</strong> (<a class="reference internal" href="image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a>) – the image to be drawn</li>
+<li><strong>text</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – the text string for get font metrics.</li>
+<li><strong>multiline</strong> (<cite>boolean</cite>) – text is multiline or not</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.gravity"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.gravity"></a>
+<tt class="descname">gravity</tt><a class="headerlink" href="#wand.drawing.Drawing.gravity" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The text placement gravity used when
+annotating with text.  It’s a string from <a class="reference internal" href="#wand.drawing.GRAVITY_TYPES" title="wand.drawing.GRAVITY_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">GRAVITY_TYPES</span></tt></a>
+list.  It also can be set.</p>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.line"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.line"></a>
+<tt class="descname">line</tt><big>(</big><em>start</em>, <em>end</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a line <tt class="docutils literal"><span class="pre">start</span></tt> to <tt class="docutils literal"><span class="pre">end</span></tt>.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>start</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>)
+pair which represents starting x and y of the line</li>
+<li><strong>end</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>)
+pair which represents ending x and y of the line</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.matte"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.matte"></a>
+<tt class="descname">matte</tt><big>(</big><em>x=None</em>, <em>y=None</em>, <em>paint_method='undefined'</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.matte" title="Permalink to this definition">¶</a></dt>
+<dd><p>Paints on the image’s opacity channel in order to set effected pixels
+to transparent.</p>
+<blockquote>
+<div>To influence the opacity of pixels. The available methods are:</div></blockquote>
+<ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'undefined'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'point'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'replace'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'floodfill'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'filltoborder'</span></tt></li>
+<li><tt class="docutils literal"><span class="pre">'reset'</span></tt></li>
+</ul>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.opacity"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.opacity"></a>
+<tt class="descname">opacity</tt><a class="headerlink" href="#wand.drawing.Drawing.opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) returns the opacity used when drawing with
+the fill or stroke color or texture. Fully opaque is 1.0. This method
+only affects vector graphics, and is experimental. To set the opacity
+of a drawing, use
+<a class="reference internal" href="#wand.drawing.Drawing.fill_opacity" title="wand.drawing.Drawing.fill_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">Drawing.fill_opacity</span></tt></a> &amp; <a class="reference internal" href="#wand.drawing.Drawing.stroke_opacity" title="wand.drawing.Drawing.stroke_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">Drawing.stroke_opacity</span></tt></a></p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_close"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_close"></a>
+<tt class="descname">path_close</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adds a path element to the current path which closes
+the current subpath by drawing a straight line from the current point
+to the current subpath’s most recent starting point.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_curve"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_curve"></a>
+<tt class="descname">path_curve</tt><big>(</big><em>to=None</em>, <em>controls=None</em>, <em>smooth=False</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_curve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a cubic Bezier curve from the current point to given <tt class="docutils literal"><span class="pre">to</span></tt>
+(x,y) coordinate using <tt class="docutils literal"><span class="pre">controls</span></tt> points at the beginning &amp; end of the
+curve. If <tt class="docutils literal"><span class="pre">smooth</span></tt> is set to True, only one <tt class="docutils literal"><span class="pre">controls</span></tt> is expected
+and the previous control is used, else two pair of coordinates are
+expected to define the control points. The <tt class="docutils literal"><span class="pre">to</span></tt> coordinate then
+becomes the new current point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents coordinates to draw to.</li>
+<li><strong>controls</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+coordinate to used to influence curve</li>
+<li><strong>smooth</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a> assume last defined control coordinate</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given coordinates as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_curve_to_quadratic_bezier"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_curve_to_quadratic_bezier"></a>
+<tt class="descname">path_curve_to_quadratic_bezier</tt><big>(</big><em>to=None</em>, <em>control=None</em>, <em>smooth=False</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_curve_to_quadratic_bezier" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a quadratic Bezier curve from the current point to given
+<tt class="docutils literal"><span class="pre">to</span></tt> coordinate. The control point is assumed to be the reflection of
+the control point on the previous command if <tt class="docutils literal"><span class="pre">smooth</span></tt> is True, else a
+pair of <tt class="docutils literal"><span class="pre">control</span></tt> coordinates must be given. Each` coordinates can be
+relative, or absolute, to the current point by setting the <tt class="docutils literal"><span class="pre">relative</span></tt>
+flag. The <tt class="docutils literal"><span class="pre">to</span></tt> coordinate then becomes the new current point, and the
+<tt class="docutils literal"><span class="pre">control</span></tt> coordinate will be assumed when called again when <tt class="docutils literal"><span class="pre">smooth</span></tt>
+is set to true.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents coordinates to draw to.</li>
+<li><strong>control</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+coordinate to used to influence curve</li>
+<li><strong>smooth</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a> assume last defined control coordinate</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given coordinates as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_elliptic_arc"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_elliptic_arc"></a>
+<tt class="descname">path_elliptic_arc</tt><big>(</big><em>to=None</em>, <em>radius=None</em>, <em>rotation=0.0</em>, <em>large_arc=False</em>, <em>clockwise=False</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_elliptic_arc" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws an elliptical arc from the current point to given <tt class="docutils literal"><span class="pre">to</span></tt>
+coordinates. The <tt class="docutils literal"><span class="pre">to</span></tt> coordinates can be relative, or absolute, to the
+current point by setting the <tt class="docutils literal"><span class="pre">relative</span></tt> flag. The size and orientation
+of the ellipse are defined by two radii (rx, ry) in <tt class="docutils literal"><span class="pre">radius</span></tt> and an
+<tt class="docutils literal"><span class="pre">rotation</span></tt> parameters, which indicates how the ellipse as a whole is
+rotated relative to the current coordinate system. The center of the
+ellipse is calculated automagically to satisfy the constraints imposed
+by the other parameters. <tt class="docutils literal"><span class="pre">large_arc</span></tt> and <tt class="docutils literal"><span class="pre">clockwise</span></tt> contribute to
+the automatic calculations and help determine how the arc is drawn.
+If <tt class="docutils literal"><span class="pre">large_arc</span></tt> is True then draw the larger of the available arcs.
+If <tt class="docutils literal"><span class="pre">clockwise</span></tt> is true, then draw the arc matching a clock-wise
+rotation.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents coordinates to draw to.</li>
+<li><strong>radius</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents the radii of the ellipse to draw</li>
+<li><strong>rotate</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a> degree to rotate ellipse on x-axis</li>
+<li><strong>large_arc</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a> draw largest available arc</li>
+<li><strong>clockwise</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+draw arc path clockwise from start to target</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given coordinates as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_finish"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_finish"></a>
+<tt class="descname">path_finish</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_finish" title="Permalink to this definition">¶</a></dt>
+<dd><p>Terminates the current path.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_horizontal_line"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_horizontal_line"></a>
+<tt class="descname">path_horizontal_line</tt><big>(</big><em>x=None</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_horizontal_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a horizontal line path from the current point to the target
+point. Given <tt class="docutils literal"><span class="pre">x</span></tt> parameter can be relative, or absolute, to the
+current point by setting the <tt class="docutils literal"><span class="pre">relative</span></tt> flag. The target point then
+becomes the new current point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>
+x-axis point to draw to.</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given point as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_line"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_line"></a>
+<tt class="descname">path_line</tt><big>(</big><em>to=None</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a line path from the current point to the given <tt class="docutils literal"><span class="pre">to</span></tt>
+coordinate. The <tt class="docutils literal"><span class="pre">to</span></tt> coordinates can be relative, or absolute, to the
+current point by setting the <tt class="docutils literal"><span class="pre">relative</span></tt> flag. The coordinate then
+becomes the new current point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents coordinates to draw to.</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given coordinates as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_move"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_move"></a>
+<tt class="descname">path_move</tt><big>(</big><em>to=None</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_move" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a new sub-path at the given coordinates. Given <tt class="docutils literal"><span class="pre">to</span></tt>
+parameter can be relative, or absolute, by setting the <tt class="docutils literal"><span class="pre">relative</span></tt>
+flag.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>to</strong> (<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a>) – (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>, <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>)
+pair which represents coordinates to draw to.</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given coordinates as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_start"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_start"></a>
+<tt class="descname">path_start</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_start" title="Permalink to this definition">¶</a></dt>
+<dd><p>Declares the start of a path drawing list which is terminated by a
+matching <a class="reference internal" href="#wand.drawing.Drawing.path_finish" title="wand.drawing.Drawing.path_finish"><tt class="xref py py-meth docutils literal"><span class="pre">path_finish()</span></tt></a> command. All other <cite>path_*</cite> commands
+must be enclosed between a <a class="reference internal" href="#wand.drawing.Drawing.path_start" title="wand.drawing.Drawing.path_start"><tt class="xref py py-meth docutils literal"><span class="pre">path_start()</span></tt></a> and a
+<a class="reference internal" href="#wand.drawing.Drawing.path_finish" title="wand.drawing.Drawing.path_finish"><tt class="xref py py-meth docutils literal"><span class="pre">path_finish()</span></tt></a> command. This is because path drawing commands
+are subordinate commands and they do not function by themselves.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.path_vertical_line"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.path_vertical_line"></a>
+<tt class="descname">path_vertical_line</tt><big>(</big><em>y=None</em>, <em>relative=False</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.path_vertical_line" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a vertical line path from the current point to the target
+point. Given <tt class="docutils literal"><span class="pre">y</span></tt> parameter can be relative, or absolute, to the
+current point by setting the <tt class="docutils literal"><span class="pre">relative</span></tt> flag. The target point then
+becomes the new current point.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>
+y-axis point to draw to.</li>
+<li><strong>relative</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>
+treat given point as relative to current point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.point"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.point"></a>
+<tt class="descname">point</tt><big>(</big><em>x</em>, <em>y</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.point" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a point at given <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a> x of point</li>
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a> y of point</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.polygon"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.polygon"></a>
+<tt class="descname">polygon</tt><big>(</big><em>points=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.polygon" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a polygon using the current <tt class="xref py py-attr docutils literal"><span class="pre">stoke_color</span></tt>,
+<a class="reference internal" href="#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a>, and <a class="reference internal" href="#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a>, using the specified
+array of coordinates.</p>
+<p>Example polygon on <tt class="docutils literal"><span class="pre">image</span></tt></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">40</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span> <span class="p">(</span><span class="mi">70</span><span class="p">,</span><span class="mi">40</span><span class="p">)]</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">list</span></tt></a>) – list of x,y tuples</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.polyline"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.polyline"></a>
+<tt class="descname">polyline</tt><big>(</big><em>points=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.polyline" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a polyline using the current <tt class="xref py py-attr docutils literal"><span class="pre">stoke_color</span></tt>,
+<a class="reference internal" href="#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a>, and <a class="reference internal" href="#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a>, using the specified
+array of coordinates.</p>
+<p>Identical to <a class="reference internal" href="#wand.drawing.Drawing.polygon" title="wand.drawing.Drawing.polygon"><tt class="xref py py-class docutils literal"><span class="pre">polygon</span></tt></a>, but without closed
+stroke line.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>points</strong> (<a class="reference external" href="http://docs.python.org/library/functions.html#list" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">list</span></tt></a>) – list of x,y tuples</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.pop"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.pop"></a>
+<tt class="descname">pop</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.pop" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop destroys the current drawing wand and returns to the previously
+pushed drawing wand. Multiple drawing wands may exist. It is an error
+to attempt to pop more drawing wands than have been pushed, and it is
+proper form to pop all drawing wands which have been pushed.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">success of pop operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><cite>bool</cite></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.pop_clip_path"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.pop_clip_path"></a>
+<tt class="descname">pop_clip_path</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.pop_clip_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Terminates a clip path definition.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.pop_defs"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.pop_defs"></a>
+<tt class="descname">pop_defs</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.pop_defs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Terminates a definition list.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.pop_pattern"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.pop_pattern"></a>
+<tt class="descname">pop_pattern</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.pop_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Terminates a pattern definition.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.push"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.push"></a>
+<tt class="descname">push</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.push" title="Permalink to this definition">¶</a></dt>
+<dd><p>Push clones the current drawing wand to create a new drawing wand.
+The original drawing wand(s) may be returned to by invoking
+<a class="reference internal" href="#wand.drawing.Drawing.pop" title="wand.drawing.Drawing.pop"><tt class="xref py py-class docutils literal"><span class="pre">Drawing.pop</span></tt></a>. The drawing wands are stored on a drawing wand
+stack. For every Pop there must have already been an equivalent Push.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">success of push operation</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Return type:</th><td class="field-body"><cite>bool</cite></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.push_clip_path"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.push_clip_path"></a>
+<tt class="descname">push_clip_path</tt><big>(</big><em>clip_mask_id</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.push_clip_path" title="Permalink to this definition">¶</a></dt>
+<dd><p>Starts a clip path definition which is comprised of any number of
+drawing commands and terminated by a <a class="reference internal" href="#wand.drawing.Drawing.pop_clip_path" title="wand.drawing.Drawing.pop_clip_path"><tt class="xref py py-class docutils literal"><span class="pre">Drawing.pop_clip_path</span></tt></a>
+command.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>clip_mask_id</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – string identifier to associate with the clip path.</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.push_defs"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.push_defs"></a>
+<tt class="descname">push_defs</tt><big>(</big><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.push_defs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates that commands up to a terminating <a class="reference internal" href="#wand.drawing.Drawing.pop_defs" title="wand.drawing.Drawing.pop_defs"><tt class="xref py py-class docutils literal"><span class="pre">Drawing.pop_defs</span></tt></a>
+command create named elements (e.g. clip-paths, textures, etc.) which
+may safely be processed earlier for the sake of efficiency.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.push_pattern"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.push_pattern"></a>
+<tt class="descname">push_pattern</tt><big>(</big><em>pattern_id</em>, <em>left</em>, <em>top</em>, <em>width</em>, <em>height</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.push_pattern" title="Permalink to this definition">¶</a></dt>
+<dd><p>Indicates that subsequent commands up to a
+<a class="reference internal" href="#wand.drawing.Drawing.pop_pattern" title="wand.drawing.Drawing.pop_pattern"><tt class="xref py py-class docutils literal"><span class="pre">Drawing.pop_pattern</span></tt></a> command comprise the definition of a named
+pattern. The pattern space is assigned top left corner coordinates, a
+width and height, and becomes its own drawing space. Anything which can
+be drawn may be used in a pattern definition. Named patterns may be used
+as stroke or brush definitions.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>pattern_id</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – a unique identifier for the pattern.</li>
+<li><strong>left</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – x ordinate of top left corner.</li>
+<li><strong>top</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – y ordinate of top left corner.</li>
+<li><strong>width</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – width of pattern space.</li>
+<li><strong>height</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – height of pattern space.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">success of push operation</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><cite>bool</cite></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.rectangle"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.rectangle"></a>
+<tt class="descname">rectangle</tt><big>(</big><em>left=None</em>, <em>top=None</em>, <em>right=None</em>, <em>bottom=None</em>, <em>width=None</em>, <em>height=None</em>, <em>radius=None</em>, <em>xradius=None</em>, <em>yradius=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.rectangle" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws a rectangle using the current <tt class="xref py py-attr docutils literal"><span class="pre">stoke_color</span></tt>,
+<a class="reference internal" href="#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a>, and <a class="reference internal" href="#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a>.</p>
+<div class="highlight-text"><div class="highlight"><pre>+--------------------------------------------------+
+|              ^                         ^         |
+|              |                         |         |
+|             top                        |         |
+|              |                         |         |
+|              v                         |         |
+| &lt;-- left --&gt; +-------------------+  bottom       |
+|              |             ^     |     |         |
+|              | &lt;-- width --|---&gt; |     |         |
+|              |           height  |     |         |
+|              |             |     |     |         |
+|              |             v     |     |         |
+|              +-------------------+     v         |
+| &lt;--------------- right ----------&gt;               |
++--------------------------------------------------+
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>left</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – x-offset of the rectangle to draw</li>
+<li><strong>top</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – y-offset of the rectangle to draw</li>
+<li><strong>right</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – second x-offset of the rectangle to draw.
+this parameter and <tt class="docutils literal"><span class="pre">width</span></tt> parameter are exclusive
+each other</li>
+<li><strong>bottom</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – second y-offset of the rectangle to draw.
+this parameter and <tt class="docutils literal"><span class="pre">height</span></tt> parameter are exclusive
+each other</li>
+<li><strong>width</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the <tt class="xref py py-attr docutils literal"><span class="pre">width</span></tt> of the rectangle to draw.
+this parameter and <tt class="docutils literal"><span class="pre">right</span></tt> parameter are exclusive
+each other</li>
+<li><strong>height</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the <tt class="xref py py-attr docutils literal"><span class="pre">height</span></tt> of the rectangle to draw.
+this parameter and <tt class="docutils literal"><span class="pre">bottom</span></tt> parameter are exclusive
+each other</li>
+<li><strong>radius</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the corner rounding. this is a short-cut for setting
+both <tt class="xref py py-attr docutils literal"><span class="pre">xradius</span></tt>, and <tt class="xref py py-attr docutils literal"><span class="pre">yradius</span></tt></li>
+<li><strong>xradius</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the <tt class="xref py py-attr docutils literal"><span class="pre">xradius</span></tt> corner in horizontal direction.</li>
+<li><strong>yradius</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) – the <tt class="xref py py-attr docutils literal"><span class="pre">yradius</span></tt> corner in vertical direction.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.6.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.4.0: </span>Radius keywords added to create rounded rectangle.</p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.rotate"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.rotate"></a>
+<tt class="descname">rotate</tt><big>(</big><em>degree</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.rotate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies the specified rotation to the current coordinate space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>degree</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – degree to rotate</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.scale"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.scale"></a>
+<tt class="descname">scale</tt><big>(</big><em>x=None</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.scale" title="Permalink to this definition">¶</a></dt>
+<dd><p>Adjusts the scaling factor to apply in the horizontal and vertical
+directions to the current coordinate space.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – Horizontal scale factor</li>
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – Vertical scale factor</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.set_fill_pattern_url"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.set_fill_pattern_url"></a>
+<tt class="descname">set_fill_pattern_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.set_fill_pattern_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the URL to use as a fill pattern for filling objects. Only local
+URLs (“#identifier”) are supported at this time. These local URLs are
+normally created by defining a named fill pattern with
+Drawing.push_pattern &amp; Drawing.pop_pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – URL to use to obtain fill pattern.</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.set_stroke_pattern_url"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.set_stroke_pattern_url"></a>
+<tt class="descname">set_stroke_pattern_url</tt><big>(</big><em>url</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.set_stroke_pattern_url" title="Permalink to this definition">¶</a></dt>
+<dd><p>Sets the pattern used for stroking object outlines. Only local
+URLs (“#identifier”) are supported at this time. These local URLs are
+normally created by defining a named stroke pattern with
+Drawing.push_pattern &amp; Drawing.pop_pattern.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>url</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – URL to use to obtain stroke pattern.</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.skew"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.skew"></a>
+<tt class="descname">skew</tt><big>(</big><em>x=None</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.skew" title="Permalink to this definition">¶</a></dt>
+<dd><p>Skews the current coordinate system in the horizontal direction if
+<tt class="docutils literal"><span class="pre">x</span></tt> is given, and vertical direction if <tt class="docutils literal"><span class="pre">y</span></tt> is given.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – Skew horizontal direction</li>
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – Skew vertical direction</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_antialias"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_antialias"></a>
+<tt class="descname">stroke_antialias</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_antialias" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) Controls whether stroked outlines are antialiased.
+Stroked outlines are antialiased by default. When antialiasing is
+disabled stroked pixels are thresholded to determine if the stroke
+color or underlying canvas color should be used.</p>
+<p>It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_color"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_color"></a>
+<tt class="descname">stroke_color</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference internal" href="color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a>) The current color of stroke.
+It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.3.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_dash_array"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_dash_array"></a>
+<tt class="descname">stroke_dash_array</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_dash_array" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Sequence</span></tt></a>) - (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) An array
+representing the pattern of dashes &amp; gaps used to stroke paths.
+It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_dash_offset"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_dash_offset"></a>
+<tt class="descname">stroke_dash_offset</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_dash_offset" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) The stroke dash offset. It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_line_cap"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_line_cap"></a>
+<tt class="descname">stroke_line_cap</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_line_cap" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The stroke line cap. It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_line_join"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_line_join"></a>
+<tt class="descname">stroke_line_join</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_line_join" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The stroke line join. It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_miter_limit"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_miter_limit"></a>
+<tt class="descname">stroke_miter_limit</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_miter_limit" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>) The current miter limit.
+It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_opacity"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_opacity"></a>
+<tt class="descname">stroke_opacity</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_opacity" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) The current stroke opacity.
+It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.stroke_width"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.stroke_width"></a>
+<tt class="descname">stroke_width</tt><a class="headerlink" href="#wand.drawing.Drawing.stroke_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) The stroke width.  It also can be set.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.3.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.text"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.text"></a>
+<tt class="descname">text</tt><big>(</big><em>x</em>, <em>y</em>, <em>body</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.text" title="Permalink to this definition">¶</a></dt>
+<dd><p>Writes a text <tt class="docutils literal"><span class="pre">body</span></tt> into (<tt class="docutils literal"><span class="pre">x</span></tt>, <tt class="docutils literal"><span class="pre">y</span></tt>).</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) – the left offset where to start writing a text</li>
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) – the baseline where to start writing text</li>
+<li><strong>body</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – the body string to write</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_alignment"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_alignment"></a>
+<tt class="descname">text_alignment</tt><a class="headerlink" href="#wand.drawing.Drawing.text_alignment" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The current text alignment setting.
+It’s a string value from <a class="reference internal" href="#wand.drawing.TEXT_ALIGN_TYPES" title="wand.drawing.TEXT_ALIGN_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">TEXT_ALIGN_TYPES</span></tt></a> list.
+It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_antialias"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_antialias"></a>
+<tt class="descname">text_antialias</tt><a class="headerlink" href="#wand.drawing.Drawing.text_antialias" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a>) The boolean value which represents whether
+antialiasing is used for text rendering.  It also can be set to
+<tt class="docutils literal"><span class="pre">True</span></tt> or <tt class="docutils literal"><span class="pre">False</span></tt> to switch the setting.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_decoration"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_decoration"></a>
+<tt class="descname">text_decoration</tt><a class="headerlink" href="#wand.drawing.Drawing.text_decoration" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The text decoration setting, a string
+from <a class="reference internal" href="#wand.drawing.TEXT_DECORATION_TYPES" title="wand.drawing.TEXT_DECORATION_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">TEXT_DECORATION_TYPES</span></tt></a> list.  It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_direction"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_direction"></a>
+<tt class="descname">text_direction</tt><a class="headerlink" href="#wand.drawing.Drawing.text_direction" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The text direction setting. a string
+from <a class="reference internal" href="#wand.drawing.TEXT_DIRECTION_TYPES" title="wand.drawing.TEXT_DIRECTION_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">TEXT_DIRECTION_TYPES</span></tt></a> list. It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_interline_spacing"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_interline_spacing"></a>
+<tt class="descname">text_interline_spacing</tt><a class="headerlink" href="#wand.drawing.Drawing.text_interline_spacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) The setting of the text line spacing.
+It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_interword_spacing"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_interword_spacing"></a>
+<tt class="descname">text_interword_spacing</tt><a class="headerlink" href="#wand.drawing.Drawing.text_interword_spacing" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) The setting of the word spacing.
+It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_kerning"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_kerning"></a>
+<tt class="descname">text_kerning</tt><a class="headerlink" href="#wand.drawing.Drawing.text_kerning" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) The setting of the text kerning.
+It also can be set.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.text_under_color"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.text_under_color"></a>
+<tt class="descname">text_under_color</tt><a class="headerlink" href="#wand.drawing.Drawing.text_under_color" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference internal" href="color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a>) The color of a background rectangle
+to place under text annotations.  It also can be set.</p>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.translate"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.translate"></a>
+<tt class="descname">translate</tt><big>(</big><em>x=None</em>, <em>y=None</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.translate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Applies a translation to the current coordinate system which moves
+the coordinate system origin to the specified coordinate.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>x</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – Skew horizontal direction</li>
+<li><strong>y</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Real</span></tt></a>) – Skew vertical direction</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.Drawing.vector_graphics"><a name="//apple_ref/cpp/Attribute/wand.drawing.Drawing.vector_graphics"></a>
+<tt class="descname">vector_graphics</tt><a class="headerlink" href="#wand.drawing.Drawing.vector_graphics" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The XML text of the Vector Graphics. It also
+can be set. The drawing-wand XML is experimental, and subject to change.</p>
+<p>Setting this property to None will reset all vector graphic properties
+to the default state.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.drawing.Drawing.viewbox"><a name="//apple_ref/cpp/Method/wand.drawing.Drawing.viewbox"></a>
+<tt class="descname">viewbox</tt><big>(</big><em>left</em>, <em>top</em>, <em>right</em>, <em>bottom</em><big>)</big><a class="headerlink" href="#wand.drawing.Drawing.viewbox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Viewbox sets the overall canvas size to be recorded with the drawing
+vector data. Usually this will be specified using the same size as the
+canvas image. When the vector data is saved to SVG or MVG formats, the
+viewbox is use to specify the size of the canvas image that a viewer
+will render the vector data on.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>left</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>) – the left most point of the viewbox.</li>
+<li><strong>top</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>) – the top most point of the viewbox.</li>
+<li><strong>right</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>) – the right most point of the viewbox.</li>
+<li><strong>bottom</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">Integral</span></tt></a>) – the bottom most point of the viewbox.</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="class">
+<dt id="wand.drawing.FontMetrics"><a name="//apple_ref/cpp/Class/wand.drawing.FontMetrics"></a>
+<em class="property">class </em><tt class="descclassname">wand.drawing.</tt><tt class="descname">FontMetrics</tt><a class="headerlink" href="#wand.drawing.FontMetrics" title="Permalink to this definition">¶</a></dt>
+<dd><p>The tuple subtype which consists of font metrics data.</p>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.ascender"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.ascender"></a>
+<tt class="descname">ascender</tt><a class="headerlink" href="#wand.drawing.FontMetrics.ascender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 2</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.character_height"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.character_height"></a>
+<tt class="descname">character_height</tt><a class="headerlink" href="#wand.drawing.FontMetrics.character_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 1</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.character_width"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.character_width"></a>
+<tt class="descname">character_width</tt><a class="headerlink" href="#wand.drawing.FontMetrics.character_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 0</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.descender"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.descender"></a>
+<tt class="descname">descender</tt><a class="headerlink" href="#wand.drawing.FontMetrics.descender" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 3</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.maximum_horizontal_advance"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.maximum_horizontal_advance"></a>
+<tt class="descname">maximum_horizontal_advance</tt><a class="headerlink" href="#wand.drawing.FontMetrics.maximum_horizontal_advance" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 6</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.text_height"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.text_height"></a>
+<tt class="descname">text_height</tt><a class="headerlink" href="#wand.drawing.FontMetrics.text_height" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 5</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.text_width"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.text_width"></a>
+<tt class="descname">text_width</tt><a class="headerlink" href="#wand.drawing.FontMetrics.text_width" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 4</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.x"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.x"></a>
+<tt class="descname">x</tt><a class="headerlink" href="#wand.drawing.FontMetrics.x" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 11</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.x1"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.x1"></a>
+<tt class="descname">x1</tt><a class="headerlink" href="#wand.drawing.FontMetrics.x1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 7</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.x2"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.x2"></a>
+<tt class="descname">x2</tt><a class="headerlink" href="#wand.drawing.FontMetrics.x2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 9</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.y"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.y"></a>
+<tt class="descname">y</tt><a class="headerlink" href="#wand.drawing.FontMetrics.y" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 12</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.y1"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.y1"></a>
+<tt class="descname">y1</tt><a class="headerlink" href="#wand.drawing.FontMetrics.y1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 8</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.drawing.FontMetrics.y2"><a name="//apple_ref/cpp/Attribute/wand.drawing.FontMetrics.y2"></a>
+<tt class="descname">y2</tt><a class="headerlink" href="#wand.drawing.FontMetrics.y2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Alias for field number 10</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer">
+    © Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+</body>
+</html>

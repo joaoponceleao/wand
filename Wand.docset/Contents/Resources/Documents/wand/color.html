@@ -1,0 +1,280 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>wand.color — Colors — Wand 0.4.0</title>
+<link href="../_static/wand.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="../_static/jquery.js" type="text/javascript"></script>
+<script src="../_static/underscore.js" type="text/javascript"></script>
+<script src="../_static/doctools.js" type="text/javascript"></script>
+<link href="../index.html" rel="top" title="Wand 0.4.0"/>
+<link href="../wand.html" rel="up" title="wand — Simple MagickWand API binding for Python"/>
+<link href="font.html" rel="next" title="wand.font — Fonts"/>
+<link href="image.html" rel="prev" title="wand.image — Image objects"/>
+<link href="../_static/small_flask.css" media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="related">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="../genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="../py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="font.html" title="wand.font — Fonts">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="image.html" title="wand.image — Image objects">previous</a> |</li>
+<li><a href="../index.html">Wand</a> »</li>
+<li><a accesskey="U" href="../wand.html"><tt class="docutils literal"><span class="pre">wand</span></tt> — Simple MagickWand API binding for Python</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body">
+<span class="target" id="module-wand.color"></span><div class="section" id="wand-color-colors"><a name="//apple_ref/cpp/Module/wand.color"></a>
+<h1><a class="reference internal" href="#module-wand.color" title="wand.color"><tt class="xref py py-mod docutils literal"><span class="pre">wand.color</span></tt></a> — Colors<a class="headerlink" href="#wand-color-colors" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.1.2.</span></p>
+</div>
+<dl class="class">
+<dt id="wand.color.Color"><a name="//apple_ref/cpp/Class/wand.color.Color"></a>
+<em class="property">class </em><tt class="descclassname">wand.color.</tt><tt class="descname">Color</tt><big>(</big><em>string=None</em>, <em>raw=None</em><big>)</big><a class="headerlink" href="#wand.color.Color" title="Permalink to this definition">¶</a></dt>
+<dd><p>Color value.</p>
+<p>Unlike any other objects in Wand, its resource management can be
+implicit when it used outside of <a class="reference external" href="http://docs.python.org/reference/compound_stmts.html#with" title="(in Python v2.7)"><tt class="xref std std-keyword docutils literal"><span class="pre">with</span></tt></a> block. In these case,
+its resource are allocated for every operation which requires a resource
+and destroyed immediately. Of course it is inefficient when the
+operations are much, so to avoid it, you should use color objects
+inside of <a class="reference external" href="http://docs.python.org/reference/compound_stmts.html#with" title="(in Python v2.7)"><tt class="xref std std-keyword docutils literal"><span class="pre">with</span></tt></a> block explicitly e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">red_count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">with</span> <span class="n">Color</span><span class="p">(</span><span class="s">'#f00'</span><span class="p">)</span> <span class="k">as</span> <span class="n">red</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">'image.png'</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">img</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">row</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">col</span> <span class="o">==</span> <span class="n">red</span><span class="p">:</span>
+                    <span class="n">red_count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>string</strong> (<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) – a color namel string e.g. <tt class="docutils literal"><span class="pre">'rgb(255,</span> <span class="pre">255,</span> <span class="pre">255)'</span></tt>,
+<tt class="docutils literal"><span class="pre">'#fff'</span></tt>, <tt class="docutils literal"><span class="pre">'white'</span></tt>. see <a class="reference external" href="http://www.imagemagick.org/script/color.php">ImageMagick Color Names</a>
+doc also</td>
+</tr>
+</tbody>
+</table>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.3.0: </span><a class="reference internal" href="#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> objects become hashable.</p>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference external" href="http://www.imagemagick.org/script/color.php">ImageMagick Color Names</a></dt>
+<dd>The color can then be given as a color name (there is a limited
+but large set of these; see below) or it can be given as a set
+of numbers (in decimal or hexadecimal), each corresponding to
+a channel in an RGB or RGBA color model. HSL, HSLA, HSB, HSBA,
+CMYK, or CMYKA color models may also be specified. These topics
+are briefly described in the sections below.</dd>
+</dl>
+</div>
+<dl class="describe">
+<dt>
+<tt class="descname">== (other)</tt></dt>
+<dd><p>Equality operator.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Param other:</th><td class="field-body">a color another one</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type color:</th><td class="field-body"><a class="reference internal" href="#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><tt class="docutils literal"><span class="pre">True</span></tt> only if two images equal.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Rtype:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.alpha"><a name="//apple_ref/cpp/Attribute/wand.color.Color.alpha"></a>
+<tt class="descname">alpha</tt><a class="headerlink" href="#wand.color.Color.alpha" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) Alpha value, from 0.0 to 1.0.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.alpha_int8"><a name="//apple_ref/cpp/Attribute/wand.color.Color.alpha_int8"></a>
+<tt class="descname">alpha_int8</tt><a class="headerlink" href="#wand.color.Color.alpha_int8" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Alpha value as 8bit integer which is
+a common style.  From 0 to 255.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.alpha_quantum"><a name="//apple_ref/cpp/Attribute/wand.color.Color.alpha_quantum"></a>
+<tt class="descname">alpha_quantum</tt><a class="headerlink" href="#wand.color.Color.alpha_quantum" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Alpha value.
+Scale depends on <a class="reference internal" href="version.html#wand.version.QUANTUM_DEPTH" title="wand.version.QUANTUM_DEPTH"><tt class="xref py py-const docutils literal"><span class="pre">QUANTUM_DEPTH</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.blue"><a name="//apple_ref/cpp/Attribute/wand.color.Color.blue"></a>
+<tt class="descname">blue</tt><a class="headerlink" href="#wand.color.Color.blue" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) Blue, from 0.0 to 1.0.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.blue_int8"><a name="//apple_ref/cpp/Attribute/wand.color.Color.blue_int8"></a>
+<tt class="descname">blue_int8</tt><a class="headerlink" href="#wand.color.Color.blue_int8" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Blue as 8bit integer which is
+a common style.  From 0 to 255.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.blue_quantum"><a name="//apple_ref/cpp/Attribute/wand.color.Color.blue_quantum"></a>
+<tt class="descname">blue_quantum</tt><a class="headerlink" href="#wand.color.Color.blue_quantum" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Blue.
+Scale depends on <a class="reference internal" href="version.html#wand.version.QUANTUM_DEPTH" title="wand.version.QUANTUM_DEPTH"><tt class="xref py py-const docutils literal"><span class="pre">QUANTUM_DEPTH</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="staticmethod">
+<dt id="wand.color.Color.c_equals"><a name="//apple_ref/cpp/Method/wand.color.Color.c_equals"></a>
+<em class="property">static </em><tt class="descname">c_equals</tt><big>(</big><em>a</em>, <em>b</em><big>)</big><a class="headerlink" href="#wand.color.Color.c_equals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Raw level version of equality test function for two pixels.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>a</strong> (<a class="reference external" href="http://docs.python.org/library/ctypes.html#ctypes.c_void_p" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">ctypes.c_void_p</span></tt></a>) – a pointer to PixelWand to compare</li>
+<li><strong>b</strong> (<a class="reference external" href="http://docs.python.org/library/ctypes.html#ctypes.c_void_p" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">ctypes.c_void_p</span></tt></a>) – a pointer to PixelWand to compare</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><tt class="docutils literal"><span class="pre">True</span></tt> only if two pixels equal</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><p class="first last"><a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s only for internal use. Don’t use it directly.
+Use <tt class="docutils literal"><span class="pre">==</span></tt> operator of <a class="reference internal" href="#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> instead.</p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.green"><a name="//apple_ref/cpp/Attribute/wand.color.Color.green"></a>
+<tt class="descname">green</tt><a class="headerlink" href="#wand.color.Color.green" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) Green, from 0.0 to 1.0.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.green_int8"><a name="//apple_ref/cpp/Attribute/wand.color.Color.green_int8"></a>
+<tt class="descname">green_int8</tt><a class="headerlink" href="#wand.color.Color.green_int8" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Green as 8bit integer which is
+a common style.  From 0 to 255.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.green_quantum"><a name="//apple_ref/cpp/Attribute/wand.color.Color.green_quantum"></a>
+<tt class="descname">green_quantum</tt><a class="headerlink" href="#wand.color.Color.green_quantum" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Green.
+Scale depends on <a class="reference internal" href="version.html#wand.version.QUANTUM_DEPTH" title="wand.version.QUANTUM_DEPTH"><tt class="xref py py-const docutils literal"><span class="pre">QUANTUM_DEPTH</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.normalized_string"><a name="//apple_ref/cpp/Attribute/wand.color.Color.normalized_string"></a>
+<tt class="descname">normalized_string</tt><a class="headerlink" href="#wand.color.Color.normalized_string" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The normalized string representation of
+the color.  The same color is always represented to the same
+string.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.red"><a name="//apple_ref/cpp/Attribute/wand.color.Color.red"></a>
+<tt class="descname">red</tt><a class="headerlink" href="#wand.color.Color.red" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>) Red, from 0.0 to 1.0.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.red_int8"><a name="//apple_ref/cpp/Attribute/wand.color.Color.red_int8"></a>
+<tt class="descname">red_int8</tt><a class="headerlink" href="#wand.color.Color.red_int8" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Red as 8bit integer which is a common
+style.  From 0 to 255.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.red_quantum"><a name="//apple_ref/cpp/Attribute/wand.color.Color.red_quantum"></a>
+<tt class="descname">red_quantum</tt><a class="headerlink" href="#wand.color.Color.red_quantum" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) Red.
+Scale depends on <a class="reference internal" href="version.html#wand.version.QUANTUM_DEPTH" title="wand.version.QUANTUM_DEPTH"><tt class="xref py py-const docutils literal"><span class="pre">QUANTUM_DEPTH</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.color.Color.string"><a name="//apple_ref/cpp/Attribute/wand.color.Color.string"></a>
+<tt class="descname">string</tt><a class="headerlink" href="#wand.color.Color.string" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The string representation of the color.</p>
+</dd></dl>
+</dd></dl>
+<dl class="function">
+<dt id="wand.color.scale_quantum_to_int8"><a name="//apple_ref/cpp/Function/wand.color.scale_quantum_to_int8"></a>
+<tt class="descclassname">wand.color.</tt><tt class="descname">scale_quantum_to_int8</tt><big>(</big><em>quantum</em><big>)</big><a class="headerlink" href="#wand.color.scale_quantum_to_int8" title="Permalink to this definition">¶</a></dt>
+<dd><p>Straightforward port of <tt class="xref c c-func docutils literal"><span class="pre">ScaleQuantumToChar()</span></tt> inline
+function.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name"></col>
+<col class="field-body"></col>
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>quantum</strong> (<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) – quantum value</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">8bit integer of the given <tt class="docutils literal"><span class="pre">quantum</span></tt> value</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Return type:</th><td class="field-body"><a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a></td>
+</tr>
+</tbody>
+</table>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer">
+    © Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+</body>
+</html>

@@ -1,0 +1,600 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Wand Changelog &mdash; Wand 0.4.0</title>
+    
+    <link rel="stylesheet" href="_static/wand.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="Wand 0.4.0" href="index.html" />
+    <link rel="next" title="Talks and Presentations" href="talks.html" />
+    <link rel="prev" title="Roadmap" href="roadmap.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="talks.html" title="Talks and Presentations"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="roadmap.html" title="Roadmap"
+             accesskey="P">previous</a> |</li>
+        <li><a href="index.html">Wand</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="wand-changelog">
+<h1>Wand Changelog<a class="headerlink" href="#wand-changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="series">
+<h2>0.4 series<a class="headerlink" href="#series" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version-0-4-0">
+<span id="changelog-0-4-0"></span><h3>Version 0.4.0<a class="headerlink" href="#version-0-4-0" title="Permalink to this headline">¶</a></h3>
+<p>Released on February 20, 2015.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="whatsnew/0.4.html"><em>What&#8217;s new in Wand 0.4?</em></a></dt>
+<dd>This guide introduces what&#8217;s new in Wand 0.4.</dd>
+</dl>
+</div>
+<ul class="simple">
+<li>Complete <a class="reference internal" href="wand/drawing.html#module-wand.drawing" title="wand.drawing"><tt class="xref py py-mod docutils literal"><span class="pre">wand.drawing</span></tt></a> API.  The whole work was done by Eric McConville.
+Huge thanks for his effort!  [<a class="reference external" href="https://github.com/dahlia/wand/issues/194">#194</a> by Eric McConville]<ul>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.arc" title="wand.drawing.Drawing.arc"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.arc()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-arc"><em>Arc</em></a>).</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.bezier" title="wand.drawing.Drawing.bezier"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.bezier()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-bezier"><em>Bezier</em></a>).</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.circle" title="wand.drawing.Drawing.circle"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.circle()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-circle"><em>Circle</em></a>).</li>
+<li><a class="reference internal" href="guide/draw.html#draw-color-and-matte"><em>Color &amp; Matte</em></a><ul>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.PAINT_METHOD_TYPES" title="wand.drawing.PAINT_METHOD_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">wand.drawing.PAINT_METHOD_TYPES</span></tt></a> constant.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.color" title="wand.drawing.Drawing.color"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.color()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.matte" title="wand.drawing.Drawing.matte"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing</span> <span class="pre">matte()</span></tt></a> method.</li>
+</ul>
+</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.composite" title="wand.drawing.Drawing.composite"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.composite()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-composite"><em>Composite</em></a>).</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.ellipse" title="wand.drawing.Drawing.ellipse"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.ellipse()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-ellipse"><em>Ellipse</em></a>).</li>
+<li><a class="reference internal" href="guide/draw.html#draw-paths"><em>Paths</em></a><ul>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_start" title="wand.drawing.Drawing.path_start"><tt class="xref py py-meth docutils literal"><span class="pre">path_start()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_finish" title="wand.drawing.Drawing.path_finish"><tt class="xref py py-meth docutils literal"><span class="pre">path_finish()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_close" title="wand.drawing.Drawing.path_close"><tt class="xref py py-meth docutils literal"><span class="pre">path_close()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_curve" title="wand.drawing.Drawing.path_curve"><tt class="xref py py-meth docutils literal"><span class="pre">path_curve()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_curve_to_quadratic_bezier" title="wand.drawing.Drawing.path_curve_to_quadratic_bezier"><tt class="xref py py-meth docutils literal"><span class="pre">path_curve_to_quadratic_bezier()</span></tt></a>
+method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_elliptic_arc" title="wand.drawing.Drawing.path_elliptic_arc"><tt class="xref py py-meth docutils literal"><span class="pre">path_elliptic_arc()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_horizontal_line" title="wand.drawing.Drawing.path_horizontal_line"><tt class="xref py py-meth docutils literal"><span class="pre">path_horizontal_line()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_line" title="wand.drawing.Drawing.path_line"><tt class="xref py py-meth docutils literal"><span class="pre">path_line()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_move" title="wand.drawing.Drawing.path_move"><tt class="xref py py-meth docutils literal"><span class="pre">path_move()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.path_vertical_line" title="wand.drawing.Drawing.path_vertical_line"><tt class="xref py py-meth docutils literal"><span class="pre">path_vertical_line()</span></tt></a> method.</li>
+</ul>
+</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.point" title="wand.drawing.Drawing.point"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.point()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-point"><em>Point</em></a>).</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.polygon" title="wand.drawing.Drawing.polygon"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.polygon()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-polygon"><em>Polygon</em></a>).</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.polyline" title="wand.drawing.Drawing.polyline"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.polyline()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-polyline"><em>Polyline</em></a>).</li>
+<li><a class="reference internal" href="guide/draw.html#draw-push-pop"><em>Push &amp; Pop</em></a><ul>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.push" title="wand.drawing.Drawing.push"><tt class="xref py py-meth docutils literal"><span class="pre">push()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.push_clip_path" title="wand.drawing.Drawing.push_clip_path"><tt class="xref py py-meth docutils literal"><span class="pre">push_clip_path()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.push_defs" title="wand.drawing.Drawing.push_defs"><tt class="xref py py-meth docutils literal"><span class="pre">push_defs()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.push_pattern" title="wand.drawing.Drawing.push_pattern"><tt class="xref py py-meth docutils literal"><span class="pre">push_pattern()</span></tt></a> method.</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">clip_path</span></tt> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.set_fill_pattern_url" title="wand.drawing.Drawing.set_fill_pattern_url"><tt class="xref py py-meth docutils literal"><span class="pre">set_fill_pattern_url()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.set_stroke_pattern_url" title="wand.drawing.Drawing.set_stroke_pattern_url"><tt class="xref py py-meth docutils literal"><span class="pre">set_stroke_pattern_url()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.pop" title="wand.drawing.Drawing.pop"><tt class="xref py py-meth docutils literal"><span class="pre">pop()</span></tt></a> method.</li>
+</ul>
+</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.rectangle" title="wand.drawing.Drawing.rectangle"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.rectangle()</span></tt></a> method
+(<a class="reference internal" href="guide/draw.html#draw-rectangles"><em>Rectangles</em></a>).</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_dash_array" title="wand.drawing.Drawing.stroke_dash_array"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_array</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_dash_offset" title="wand.drawing.Drawing.stroke_dash_offset"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_offset</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_line_cap" title="wand.drawing.Drawing.stroke_line_cap"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_cap</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_line_join" title="wand.drawing.Drawing.stroke_line_join"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_join</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_miter_limit" title="wand.drawing.Drawing.stroke_miter_limit"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_miter_limit</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_opacity" title="wand.drawing.Drawing.stroke_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_opacity</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.fill_opacity" title="wand.drawing.Drawing.fill_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">fill_opacity</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.fill_rule" title="wand.drawing.Drawing.fill_rule"><tt class="xref py py-attr docutils literal"><span class="pre">fill_rule</span></tt></a> property.</li>
+</ul>
+</li>
+<li>Error message of <a class="reference internal" href="wand/exceptions.html#wand.exceptions.MissingDelegateError" title="wand.exceptions.MissingDelegateError"><tt class="xref py py-exc docutils literal"><span class="pre">MissingDelegateError</span></tt></a> raised by
+<a class="reference internal" href="wand/image.html#wand.image.BaseImage.liquid_rescale" title="wand.image.BaseImage.liquid_rescale"><tt class="xref py py-meth docutils literal"><span class="pre">Image.liquid_rescale()</span></tt></a>
+became nicer.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id1">
+<h2>0.3 series<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version-0-3-9">
+<h3>Version 0.3.9<a class="headerlink" href="#version-0-3-9" title="Permalink to this headline">¶</a></h3>
+<p>Released on December 20, 2014.</p>
+<ul class="simple">
+<li>Added <tt class="docutils literal"><span class="pre">'pdf:use-cropbox'</span></tt> option to <a class="reference internal" href="wand/image.html#wand.image.BaseImage.options" title="wand.image.BaseImage.options"><tt class="xref py py-attr docutils literal"><span class="pre">Image.options</span></tt></a> dictionary (and <tt class="xref py py-const docutils literal"><span class="pre">OPTIONS</span></tt>
+constant).  [<a class="reference external" href="https://github.com/dahlia/wand/issues/185">#185</a> by Christoph Neuroth]</li>
+<li>Fixed a bug that exception message was <tt class="xref py py-class docutils literal"><span class="pre">bytes</span></tt> instead of
+<a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">str</span></tt></a> on Python 3.</li>
+<li>The <tt class="docutils literal"><span class="pre">size</span></tt> parameter of <a class="reference internal" href="wand/font.html#wand.font.Font" title="wand.font.Font"><tt class="xref py py-class docutils literal"><span class="pre">Font</span></tt></a> class becomes optional.
+Its default value is 0, which means <em>autosized</em>.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/191">#191</a> by Cha, Hojeong]</li>
+<li>Fixed a bug that <a class="reference internal" href="wand/image.html#wand.image.Image.read" title="wand.image.Image.read"><tt class="xref py py-meth docutils literal"><span class="pre">Image.read()</span></tt></a> had tried
+using <tt class="xref c c-func docutils literal"><span class="pre">MagickReadImageFile()</span></tt> even when the given file object
+has no <tt class="xref py py-attr docutils literal"><span class="pre">mode</span></tt> attribute.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/205">#205</a> by Stephen J. Fuhry]</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-8">
+<h3>Version 0.3.8<a class="headerlink" href="#version-0-3-8" title="Permalink to this headline">¶</a></h3>
+<p>Released on August 3, 2014.</p>
+<ul class="simple">
+<li>Fixed a bug that transparent background becomes filled with white
+when SVG is converted to other bitmap image format like PNG.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/184">#184</a>]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.negate" title="wand.image.BaseImage.negate"><tt class="xref py py-meth docutils literal"><span class="pre">Image.negate()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/174">#174</a> by Park Joon-Kyu]</li>
+<li>Fixed a segmentation fault on <a class="reference internal" href="wand/image.html#wand.image.BaseImage.modulate" title="wand.image.BaseImage.modulate"><tt class="xref py py-meth docutils literal"><span class="pre">Image.modulate()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/173">#173</a> by Ted Fung, <a class="reference external" href="https://github.com/dahlia/wand/issues/158">#158</a>]</li>
+<li>Added suggestion to install freetype also if Homebrew is used.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/141">#141</a>]</li>
+<li>Now <em class="mimetype">image/x-gif</em> also is determined as <tt class="xref py py-attr docutils literal"><span class="pre">animation</span></tt>.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/181">#181</a> by Juan-Pablo Scaletti]</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-7">
+<h3>Version 0.3.7<a class="headerlink" href="#version-0-3-7" title="Permalink to this headline">¶</a></h3>
+<p>Released on March 25, 2014.</p>
+<ul class="simple">
+<li>A hotfix of debug prints made at 0.3.6.</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-6">
+<h3>Version 0.3.6<a class="headerlink" href="#version-0-3-6" title="Permalink to this headline">¶</a></h3>
+<p>Released on March 23, 2014.</p>
+<ul class="simple">
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.rectangle" title="wand.drawing.Drawing.rectangle"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.rectangle()</span></tt></a> method.
+<a class="reference internal" href="guide/draw.html#draw-rectangles"><em>Now you can draw rectangles.</em></a> [<a class="reference external" href="https://github.com/dahlia/wand/issues/159">#159</a>]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.compression" title="wand.image.Image.compression"><tt class="xref py py-attr docutils literal"><span class="pre">Image.compression</span></tt></a> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/171">#171</a>]</li>
+<li>Added <a class="reference external" href="http://docs.python.org/library/contextlib.html#contextlib.nested" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">contextlib.nested()</span></tt></a> function to <a class="reference internal" href="wand/compat.html#module-wand.compat" title="wand.compat"><tt class="xref py py-mod docutils literal"><span class="pre">wand.compat</span></tt></a> module.</li>
+<li>Fixed <tt class="xref py py-exc docutils literal"><span class="pre">UnicodeEncodeError</span></tt> when <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.text" title="wand.drawing.Drawing.text"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.text()</span></tt></a> method gives Unicode <tt class="docutils literal"><span class="pre">text</span></tt> argument
+in Python 2.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/163">#163</a>]</li>
+<li>Now it now allows to use Wand when Python is invoked with the <tt class="docutils literal"><span class="pre">-OO</span></tt> flag.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/169">#169</a> by Samuel Maudo]</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-5">
+<h3>Version 0.3.5<a class="headerlink" href="#version-0-3-5" title="Permalink to this headline">¶</a></h3>
+<p>Released on September 13, 2013.</p>
+<ul class="simple">
+<li>Fix segmentation fault on <tt class="xref py py-meth docutils literal"><span class="pre">Image.save()</span></tt> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/150">#150</a>]</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-4">
+<h3>Version 0.3.4<a class="headerlink" href="#version-0-3-4" title="Permalink to this headline">¶</a></h3>
+<p>Released on September 9, 2013.</p>
+<ul class="simple">
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.modulate" title="wand.image.BaseImage.modulate"><tt class="xref py py-meth docutils literal"><span class="pre">Image.modulate()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/134">#134</a> by Dan P. Smith]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.colorspace" title="wand.image.BaseImage.colorspace"><tt class="xref py py-attr docutils literal"><span class="pre">Image.colorspace</span></tt></a> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/135">#135</a> by Volodymyr Kuznetsov]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.unsharp_mask" title="wand.image.BaseImage.unsharp_mask"><tt class="xref py py-meth docutils literal"><span class="pre">Image.unsharp_mask()</span></tt></a>
+method.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/136">#136</a> by Volodymyr Kuznetsov]</li>
+<li>Added <tt class="docutils literal"><span class="pre">'jpeg:sampling-factor'</span></tt> option to <a class="reference internal" href="wand/image.html#wand.image.BaseImage.options" title="wand.image.BaseImage.options"><tt class="xref py py-attr docutils literal"><span class="pre">Image.options</span></tt></a> dictionary (and <tt class="xref py py-const docutils literal"><span class="pre">OPTIONS</span></tt>
+constant).  [<a class="reference external" href="https://github.com/dahlia/wand/issues/137">#137</a> by Volodymyr Kuznetsov]</li>
+<li>Fixed ImageMagick shared library resolution on Arch Linux.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/139">#139</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/140">#140</a> by Sergey Tereschenko]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.sample" title="wand.image.BaseImage.sample"><tt class="xref py py-meth docutils literal"><span class="pre">Image.sample()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/142">#142</a> by Michael Allen]</li>
+<li>Fixed a bug that <a class="reference internal" href="wand/image.html#wand.image.Image.save" title="wand.image.Image.save"><tt class="xref py py-meth docutils literal"><span class="pre">Image.save()</span></tt></a> preserves
+only one frame of the given animation when file-like object is passed.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/143">#143</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/145">#145</a> by Michael Allen]</li>
+<li>Fixed searching of ImageMagick shared library with HDR support enabled.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/148">#148</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/149">#149</a> by Lipin Dmitriy]</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-3">
+<h3>Version 0.3.3<a class="headerlink" href="#version-0-3-3" title="Permalink to this headline">¶</a></h3>
+<p>Released on August 4, 2013.  It&#8217;s author&#8217;s birthday.</p>
+<ul class="simple">
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.gaussian_blur" title="wand.image.BaseImage.gaussian_blur"><tt class="xref py py-meth docutils literal"><span class="pre">Image.gaussian_blur()</span></tt></a>
+method.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_color" title="wand.drawing.Drawing.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">Drawing.stroke_color</span></tt></a>
+property.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/129">#129</a> by Zeray Rice]</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">Drawing.stroke_width</span></tt></a>
+property.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/130">#130</a> by Zeray Rice]</li>
+<li>Fixed a memory leak of <a class="reference internal" href="wand/color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> class.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/127">#127</a> by Wieland Morgenstern]</li>
+<li>Fixed a bug that <a class="reference internal" href="wand/image.html#wand.image.Image.save" title="wand.image.Image.save"><tt class="xref py py-meth docutils literal"><span class="pre">Image.save()</span></tt></a> to stream
+truncates data.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/128">#128</a> by Michael Allen]</li>
+<li>Fixed broken <a class="reference internal" href="wand/display.html#wand.display.display" title="wand.display.display"><tt class="xref py py-func docutils literal"><span class="pre">display()</span></tt></a> on Python 3.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/126">#126</a>]</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-2">
+<h3>Version 0.3.2<a class="headerlink" href="#version-0-3-2" title="Permalink to this headline">¶</a></h3>
+<p>Released on July 11, 2013.</p>
+<ul class="simple">
+<li>Fixed incorrect encoding of filenames.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/122">#122</a>]</li>
+<li>Fixed key type of <a class="reference internal" href="wand/image.html#wand.image.Image.metadata" title="wand.image.Image.metadata"><tt class="xref py py-attr docutils literal"><span class="pre">Image.metadata</span></tt></a>
+dictionary to <a class="reference external" href="http://docs.python.org/library/functions.html#str" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">str</span></tt></a> from <tt class="xref py py-class docutils literal"><span class="pre">bytes</span></tt> in Python 3.</li>
+<li>Fixed CentOS compatibility [<a class="reference external" href="https://github.com/dahlia/wand/issues/116">#116</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/124">#124</a> by Pierre Vanliefland]<ul>
+<li>Made <tt class="xref c c-func docutils literal"><span class="pre">DrawSetTextInterlineSpacing()</span></tt> and
+<tt class="xref c c-func docutils literal"><span class="pre">DrawGetTextInterlineSpacing()</span></tt> optional.</li>
+<li>Added exception in drawing API when trying to use
+<tt class="xref c c-func docutils literal"><span class="pre">DrawSetTextInterlineSpacing()</span></tt> and
+<tt class="xref c c-func docutils literal"><span class="pre">DrawGetTextInterlineSpacing()</span></tt> functions when they are not
+available.</li>
+<li>Added <a class="reference internal" href="wand/exceptions.html#wand.exceptions.WandLibraryVersionError" title="wand.exceptions.WandLibraryVersionError"><tt class="xref py py-exc docutils literal"><span class="pre">WandLibraryVersionError</span></tt></a> class for
+library versions issues.</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-1">
+<h3>Version 0.3.1<a class="headerlink" href="#version-0-3-1" title="Permalink to this headline">¶</a></h3>
+<p>Released on June 23, 2013.</p>
+<ul class="simple">
+<li>Fixed <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ImportError" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">ImportError</span></tt></a> on Windows.</li>
+</ul>
+</div>
+<div class="section" id="version-0-3-0">
+<span id="changelog-0-3-0"></span><h3>Version 0.3.0<a class="headerlink" href="#version-0-3-0" title="Permalink to this headline">¶</a></h3>
+<p>Released on June 17, 2013.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference internal" href="whatsnew/0.3.html"><em>What&#8217;s new in Wand 0.3?</em></a></dt>
+<dd>This guide introduces what&#8217;s new in Wand 0.3.</dd>
+</dl>
+</div>
+<ul class="simple">
+<li>Now also works on Python 2.6, 2.7, and 3.2 or higher.</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#module-wand.drawing" title="wand.drawing"><tt class="xref py py-mod docutils literal"><span class="pre">wand.drawing</span></tt></a> module.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/64">#64</a> by Adrian Jung]</li>
+<li>Added <a class="reference internal" href="wand/drawing.html#wand.drawing.Drawing.get_font_metrics" title="wand.drawing.Drawing.get_font_metrics"><tt class="xref py py-meth docutils literal"><span class="pre">Drawing.get_font_metrics()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/69">#69</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/71">#71</a> by Cha, Hojeong]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.caption" title="wand.image.BaseImage.caption"><tt class="xref py py-meth docutils literal"><span class="pre">Image.caption()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/74">#74</a> by Cha, Hojeong]</li>
+<li>Added optional <tt class="docutils literal"><span class="pre">color</span></tt> parameter to <a class="reference internal" href="wand/image.html#wand.image.Image.trim" title="wand.image.Image.trim"><tt class="xref py py-meth docutils literal"><span class="pre">Image.trim()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.border" title="wand.image.Image.border"><tt class="xref py py-meth docutils literal"><span class="pre">Image.border()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/commit/2496d37f75d75e9425f95dde07033217dc8afefc">2496d37f75d75e9425f95dde07033217dc8afefc</a> by Jae-Myoung Yu]</li>
+<li>Added <tt class="docutils literal"><span class="pre">resolution</span></tt> parameter to <a class="reference internal" href="wand/image.html#wand.image.Image.read" title="wand.image.Image.read"><tt class="xref py py-meth docutils literal"><span class="pre">Image.read()</span></tt></a>
+method and the constructor of <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a>.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/75">#75</a> by Andrey Antukh]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.liquid_rescale" title="wand.image.BaseImage.liquid_rescale"><tt class="xref py py-meth docutils literal"><span class="pre">Image.liquid_rescale()</span></tt></a>
+method which does <a class="reference external" href="http://en.wikipedia.org/wiki/Seam_carving">seam carving</a>.  See also <a class="reference internal" href="guide/resizecrop.html#seam-carving"><em>Seam carving (also known as content-aware resizing)</em></a>.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.metadata" title="wand.image.Image.metadata"><tt class="xref py py-attr docutils literal"><span class="pre">Image.metadata</span></tt></a> immutable mapping
+attribute and <a class="reference internal" href="wand/image.html#wand.image.Metadata" title="wand.image.Metadata"><tt class="xref py py-class docutils literal"><span class="pre">Metadata</span></tt></a> mapping type for it.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/56">#56</a> by Michael Elovskikh]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.channel_images" title="wand.image.Image.channel_images"><tt class="xref py py-attr docutils literal"><span class="pre">Image.channel_images</span></tt></a>
+immutable mapping attribute and <a class="reference internal" href="wand/image.html#wand.image.ChannelImageDict" title="wand.image.ChannelImageDict"><tt class="xref py py-class docutils literal"><span class="pre">ChannelImageDict</span></tt></a>
+mapping for it.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.channel_depths" title="wand.image.Image.channel_depths"><tt class="xref py py-attr docutils literal"><span class="pre">Image.channel_depths</span></tt></a>
+immutable mapping attribute and <a class="reference internal" href="wand/image.html#wand.image.ChannelDepthDict" title="wand.image.ChannelDepthDict"><tt class="xref py py-class docutils literal"><span class="pre">ChannelDepthDict</span></tt></a>
+mapping for it.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.composite_channel" title="wand.image.BaseImage.composite_channel"><tt class="xref py py-meth docutils literal"><span class="pre">Image.composite_channel()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.read" title="wand.image.Image.read"><tt class="xref py py-meth docutils literal"><span class="pre">Image.read()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/58">#58</a> by Piotr Florczyk]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.resolution" title="wand.image.BaseImage.resolution"><tt class="xref py py-attr docutils literal"><span class="pre">Image.resolution</span></tt></a> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/58">#58</a> by Piotr Florczyk]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.blank" title="wand.image.Image.blank"><tt class="xref py py-meth docutils literal"><span class="pre">Image.blank()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/60">#60</a> by Piotr Florczyk]</li>
+<li>Fixed several memory leaks.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/62">#62</a> by Mitch Lindgren]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.ImageProperty" title="wand.image.ImageProperty"><tt class="xref py py-class docutils literal"><span class="pre">ImageProperty</span></tt></a> mixin class to maintain
+a weak reference to the parent image.</li>
+<li>Ranamed <tt class="xref py py-const docutils literal"><span class="pre">wand.image.COMPOSITE_OPS</span></tt> to
+<a class="reference internal" href="wand/image.html#wand.image.COMPOSITE_OPERATORS" title="wand.image.COMPOSITE_OPERATORS"><tt class="xref py py-const docutils literal"><span class="pre">COMPOSITE_OPERATORS</span></tt></a>.</li>
+<li>Now it shows helpful error message when ImageMagick library cannot be
+found.</li>
+<li>Added IPython-specialized formatter.</li>
+<li>Added <a class="reference internal" href="wand/version.html#wand.version.QUANTUM_DEPTH" title="wand.version.QUANTUM_DEPTH"><tt class="xref py py-const docutils literal"><span class="pre">QUANTUM_DEPTH</span></tt></a> constant.</li>
+<li>Added these properties to <a class="reference internal" href="wand/color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> class:<ul>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.red_quantum" title="wand.color.Color.red_quantum"><tt class="xref py py-attr docutils literal"><span class="pre">red_quantum</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.green_quantum" title="wand.color.Color.green_quantum"><tt class="xref py py-attr docutils literal"><span class="pre">green_quantum</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.blue_quantum" title="wand.color.Color.blue_quantum"><tt class="xref py py-attr docutils literal"><span class="pre">blue_quantum</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.alpha_quantum" title="wand.color.Color.alpha_quantum"><tt class="xref py py-attr docutils literal"><span class="pre">alpha_quantum</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.red_int8" title="wand.color.Color.red_int8"><tt class="xref py py-attr docutils literal"><span class="pre">red_int8</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.green_int8" title="wand.color.Color.green_int8"><tt class="xref py py-attr docutils literal"><span class="pre">green_int8</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.blue_int8" title="wand.color.Color.blue_int8"><tt class="xref py py-attr docutils literal"><span class="pre">blue_int8</span></tt></a></li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color.alpha_int8" title="wand.color.Color.alpha_int8"><tt class="xref py py-attr docutils literal"><span class="pre">alpha_int8</span></tt></a></li>
+</ul>
+</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.normalize" title="wand.image.Image.normalize"><tt class="xref py py-meth docutils literal"><span class="pre">Image.normalize()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/95">#95</a> by Michael Curry]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.transparent_color" title="wand.image.BaseImage.transparent_color"><tt class="xref py py-meth docutils literal"><span class="pre">Image.transparent_color()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/98">#98</a> by Lionel Koenig]</li>
+<li>Started supporting resizing and cropping of GIF images.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/88">#88</a> by Bear Dong, <a class="reference external" href="https://github.com/dahlia/wand/issues/112">#112</a> by Taeho Kim]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.flip" title="wand.image.BaseImage.flip"><tt class="xref py py-meth docutils literal"><span class="pre">Image.flip()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.flop" title="wand.image.BaseImage.flop"><tt class="xref py py-meth docutils literal"><span class="pre">Image.flop()</span></tt></a> method.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.BaseImage.orientation" title="wand.image.BaseImage.orientation"><tt class="xref py py-attr docutils literal"><span class="pre">Image.orientation</span></tt></a> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/commit/88574468a38015669dae903185fb328abdd717c0">88574468a38015669dae903185fb328abdd717c0</a> by Taeho Kim]</li>
+<li><a class="reference internal" href="wand/resource.html#wand.resource.DestroyedResourceError" title="wand.resource.DestroyedResourceError"><tt class="xref py py-exc docutils literal"><span class="pre">wand.resource.DestroyedResourceError</span></tt></a> becomes a subtype of
+<a class="reference internal" href="wand/exceptions.html#wand.exceptions.WandException" title="wand.exceptions.WandException"><tt class="xref py py-exc docutils literal"><span class="pre">wand.exceptions.WandException</span></tt></a>.</li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> is now hashable, so can be used as a key of
+dictionaries, or an element of sets.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/114">#114</a> by klutzy]</li>
+<li><a class="reference internal" href="wand/color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> has <a class="reference internal" href="wand/color.html#wand.color.Color.normalized_string" title="wand.color.Color.normalized_string"><tt class="xref py py-attr docutils literal"><span class="pre">normalized_string</span></tt></a>
+property.</li>
+<li><a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> has <a class="reference internal" href="wand/image.html#wand.image.BaseImage.histogram" title="wand.image.BaseImage.histogram"><tt class="xref py py-attr docutils literal"><span class="pre">histogram</span></tt></a>
+dictionary.</li>
+<li>Added optional <tt class="docutils literal"><span class="pre">fuzz</span></tt> parameter to <a class="reference internal" href="wand/image.html#wand.image.Image.trim" title="wand.image.Image.trim"><tt class="xref py py-meth docutils literal"><span class="pre">Image.trim()</span></tt></a> method.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/113">#113</a> by Evaldo Junior]</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>0.2 series<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version-0-2-4">
+<h3>Version 0.2.4<a class="headerlink" href="#version-0-2-4" title="Permalink to this headline">¶</a></h3>
+<p>Released on May 28, 2013.</p>
+<ul class="simple">
+<li>Fix <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.NameError" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">NameError</span></tt></a> in <a class="reference internal" href="wand/resource.html#wand.resource.Resource.resource" title="wand.resource.Resource.resource"><tt class="xref py py-attr docutils literal"><span class="pre">Resource.resource</span></tt></a> setter.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/89">#89</a> forwareded from Debian bug report <a class="reference external" href="http://bugs.debian.org/cgi-bin/bugreport.cgi?bug=699064">#699064</a>
+by Jakub Wilk]</li>
+<li>Fix the problem of library loading for Mac with Homebrew and Arch Linux.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/102">#102</a> by Roel Gerrits, <a class="reference external" href="https://github.com/dahlia/wand/issues/44">#44</a>]</li>
+</ul>
+</div>
+<div class="section" id="version-0-2-3">
+<h3>Version 0.2.3<a class="headerlink" href="#version-0-2-3" title="Permalink to this headline">¶</a></h3>
+<p>Released on January 25, 2013.</p>
+<ul class="simple">
+<li>Fixed a bug that <tt class="xref py py-meth docutils literal"><span class="pre">Image.transparentize()</span></tt> method (and <tt class="xref py py-meth docutils literal"><span class="pre">Image.watermark()</span></tt> method which internally uses it) didn&#8217;t
+work.</li>
+<li>Fixed segmentation fault occurred when <a class="reference internal" href="wand/color.html#wand.color.Color.red" title="wand.color.Color.red"><tt class="xref py py-attr docutils literal"><span class="pre">Color.red</span></tt></a>, <a class="reference internal" href="wand/color.html#wand.color.Color.green" title="wand.color.Color.green"><tt class="xref py py-attr docutils literal"><span class="pre">Color.green</span></tt></a>,
+or <tt class="xref py py-attr docutils literal"><span class="pre">Color.blue</span></tt> is accessed.</li>
+<li>Added <a class="reference internal" href="wand/color.html#wand.color.Color.alpha" title="wand.color.Color.alpha"><tt class="xref py py-attr docutils literal"><span class="pre">Color.alpha</span></tt></a> property.</li>
+<li>Fixed a bug that format converting using <a class="reference internal" href="wand/image.html#wand.image.Image.format" title="wand.image.Image.format"><tt class="xref py py-attr docutils literal"><span class="pre">Image.format</span></tt></a> property or <a class="reference internal" href="wand/image.html#wand.image.Image.convert" title="wand.image.Image.convert"><tt class="xref py py-meth docutils literal"><span class="pre">Image.convert()</span></tt></a> method doesn&#8217;t correctly work
+to save blob.</li>
+</ul>
+</div>
+<div class="section" id="version-0-2-2">
+<h3>Version 0.2.2<a class="headerlink" href="#version-0-2-2" title="Permalink to this headline">¶</a></h3>
+<p>Released on September 24, 2012.</p>
+<ul class="simple">
+<li>A compatibility fix for FreeBSD.
+[<a class="reference external" href="http://olivier-freebsd-ports.googlecode.com/hg-history/efb852a5572/graphics/py-wand/files/patch-wand_api.py">Patch</a> by Olivier Duchateau]</li>
+<li>Now <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> can be instantiated without any opening.
+Instead, it can take <tt class="docutils literal"><span class="pre">width</span></tt>/<tt class="docutils literal"><span class="pre">height</span></tt> and <tt class="docutils literal"><span class="pre">background</span></tt>.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/53">#53</a> by Michael Elovskikh]</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.transform()</span></tt> method
+which is a convenience method accepting geometry strings to perform
+cropping and resizing.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/50">#50</a> by Mitch Lindgren]</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.units</span></tt> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/45">#45</a> by Piotr Florczyk]</li>
+<li>Now <tt class="xref py py-meth docutils literal"><span class="pre">Image.resize()</span></tt> method raises
+a proper error when it fails for any reason.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/41">#41</a> by Piotr Florczyk]</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.type</span></tt> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/33">#33</a> by Yauhen Yakimovich, <a class="reference external" href="https://github.com/dahlia/wand/issues/42">#42</a> by Piotr Florczyk]</li>
+</ul>
+</div>
+<div class="section" id="version-0-2-1">
+<h3>Version 0.2.1<a class="headerlink" href="#version-0-2-1" title="Permalink to this headline">¶</a></h3>
+<p>Released on August 19, 2012.  Beta version.</p>
+<ul class="simple">
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.trim" title="wand.image.Image.trim"><tt class="xref py py-meth docutils literal"><span class="pre">Image.trim()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/26">#26</a> by Jökull Sólberg Auðunsson]</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.depth</span></tt> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/31">#31</a> by Piotr Florczyk]</li>
+<li>Now <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> can take an optional <tt class="docutils literal"><span class="pre">format</span></tt> hint.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/32">#32</a> by Michael Elovskikh]</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.alpha_channel</span></tt>
+property.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/35">#35</a> by Piotr Florczyk]</li>
+<li>The default value of <tt class="xref py py-meth docutils literal"><span class="pre">Image.resize()</span></tt>&#8216;s
+<tt class="docutils literal"><span class="pre">filter</span></tt> option has changed from <tt class="docutils literal"><span class="pre">'triangle'</span></tt> to <tt class="docutils literal"><span class="pre">'undefined'</span></tt>.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/37">#37</a> by Piotr Florczyk]</li>
+<li>Added version data of the linked ImageMagick library into <a class="reference internal" href="wand/version.html#module-wand.version" title="wand.version"><tt class="xref py py-mod docutils literal"><span class="pre">wand.version</span></tt></a>
+module:<ul>
+<li><a class="reference internal" href="wand/version.html#wand.version.MAGICK_VERSION" title="wand.version.MAGICK_VERSION"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_VERSION</span></tt></a> (<tt class="xref c c-func docutils literal"><span class="pre">GetMagickVersion()</span></tt>)</li>
+<li><a class="reference internal" href="wand/version.html#wand.version.MAGICK_VERSION_INFO" title="wand.version.MAGICK_VERSION_INFO"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_VERSION_INFO</span></tt></a> (<tt class="xref c c-func docutils literal"><span class="pre">GetMagickVersion()</span></tt>)</li>
+<li><a class="reference internal" href="wand/version.html#wand.version.MAGICK_VERSION_NUMBER" title="wand.version.MAGICK_VERSION_NUMBER"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_VERSION_NUMBER</span></tt></a> (<tt class="xref c c-func docutils literal"><span class="pre">GetMagickVersion()</span></tt>)</li>
+<li><a class="reference internal" href="wand/version.html#wand.version.MAGICK_RELEASE_DATE" title="wand.version.MAGICK_RELEASE_DATE"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_RELEASE_DATE</span></tt></a> (<tt class="xref c c-func docutils literal"><span class="pre">GetMagickReleaseDate()</span></tt>)</li>
+<li><a class="reference internal" href="wand/version.html#wand.version.MAGICK_RELEASE_DATE_STRING" title="wand.version.MAGICK_RELEASE_DATE_STRING"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_RELEASE_DATE_STRING</span></tt></a>
+(<tt class="xref c c-func docutils literal"><span class="pre">GetMagickReleaseDate()</span></tt>)</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="version-0-2-0">
+<h3>Version 0.2.0<a class="headerlink" href="#version-0-2-0" title="Permalink to this headline">¶</a></h3>
+<p>Released on June 20, 2012.  Alpha version.</p>
+<ul class="simple">
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.transparentize()</span></tt> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/19">#19</a> by Jeremy Axmacher]</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.composite()</span></tt> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/19">#19</a> by Jeremy Axmacher]</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.watermark()</span></tt> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/19">#19</a> by Jeremy Axmacher]</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.quantum_range</span></tt> property.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/19">#19</a> by Jeremy Axmacher]</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.reset_coords()</span></tt> method
+and <tt class="docutils literal"><span class="pre">reset_coords</span></tt> option to <tt class="xref py py-meth docutils literal"><span class="pre">Image.rotate()</span></tt> method. [<a class="reference external" href="https://github.com/dahlia/wand/issues/20">#20</a> by Juan Pablo Scaletti]</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.strip" title="wand.image.Image.strip"><tt class="xref py py-meth docutils literal"><span class="pre">Image.strip()</span></tt></a> method.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/23">#23</a> by Dmitry Vukolov]</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.compression_quality</span></tt>
+property.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/23">#23</a> by Dmitry Vukolov]</li>
+<li>Now the current version can be found from the command line interface:
+<tt class="docutils literal"><span class="pre">python</span> <span class="pre">-m</span> <span class="pre">wand.version</span></tt>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h2>0.1 series<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="version-0-1-10">
+<h3>Version 0.1.10<a class="headerlink" href="#version-0-1-10" title="Permalink to this headline">¶</a></h3>
+<p>Released on May 8, 2012.  Still alpha version.</p>
+<ul class="simple">
+<li>So many Windows compatibility issues are fixed. [<a class="reference external" href="https://github.com/dahlia/wand/issues/14">#14</a> by John Simon]</li>
+<li>Added <a class="reference internal" href="wand/api.html#wand.api.libmagick" title="wand.api.libmagick"><tt class="xref py py-data docutils literal"><span class="pre">wand.api.libmagick</span></tt></a>.</li>
+<li>Fixed a bug that raises <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.AttributeError" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">AttributeError</span></tt></a> when it&#8217;s trying
+to warn.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/16">#16</a> by Tim Dettrick]</li>
+<li>Now it throws <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ImportError" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">ImportError</span></tt></a> instead of
+<a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.AttributeError" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">AttributeError</span></tt></a> when the shared library fails
+to load.  [<a class="reference external" href="https://github.com/dahlia/wand/issues/17">#17</a> by Kieran Spear]</li>
+<li>Fixed the example usage on index page of the documentation.
+[<a class="reference external" href="https://github.com/dahlia/wand/issues/18">#18</a> by Jeremy Axmacher]</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-9">
+<h3>Version 0.1.9<a class="headerlink" href="#version-0-1-9" title="Permalink to this headline">¶</a></h3>
+<p>Released on December 23, 2011. Still alpha version.</p>
+<ul class="simple">
+<li>Now <a class="reference internal" href="wand/version.html#wand.version.VERSION_INFO" title="wand.version.VERSION_INFO"><tt class="xref py py-const docutils literal"><span class="pre">wand.version.VERSION_INFO</span></tt></a> becomes <tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt> and
+<a class="reference internal" href="wand/version.html#wand.version.VERSION" title="wand.version.VERSION"><tt class="xref py py-const docutils literal"><span class="pre">wand.version.VERSION</span></tt></a> becomes a string.</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.background_color</span></tt>
+property.</li>
+<li>Added <tt class="docutils literal"><span class="pre">==</span></tt> operator for <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> type.</li>
+<li>Added <a class="reference external" href="http://docs.python.org/library/functions.html#hash" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">hash()</span></tt></a> support of <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> type.</li>
+<li>Added <tt class="xref py py-attr docutils literal"><span class="pre">Image.signature</span></tt> property.</li>
+<li>Added <a class="reference internal" href="wand/display.html#module-wand.display" title="wand.display"><tt class="xref py py-mod docutils literal"><span class="pre">wand.display</span></tt></a> module.</li>
+<li>Changed the theme of Sphinx documentation.</li>
+<li>Changed the start example of the documentation.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-8">
+<h3>Version 0.1.8<a class="headerlink" href="#version-0-1-8" title="Permalink to this headline">¶</a></h3>
+<p>Released on December 2, 2011. Still alpha version.</p>
+<ul class="simple">
+<li>Wrote some guide documentations: <a class="reference internal" href="guide/read.html"><em>Reading images</em></a>, <a class="reference internal" href="guide/write.html"><em>Writing images</em></a> and
+<a class="reference internal" href="guide/resizecrop.html"><em>Resizing and cropping</em></a>.</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.rotate()</span></tt> method for in-place
+rotation.</li>
+<li>Made <tt class="xref py py-meth docutils literal"><span class="pre">Image.crop()</span></tt> to raise proper
+<tt class="xref py py-exc docutils literal"><span class="pre">ValueError</span></tt> instead of <tt class="xref py py-exc docutils literal"><span class="pre">IndexError</span></tt> for invalid width/height
+arguments.</li>
+<li>Changed the type of <tt class="xref py py-meth docutils literal"><span class="pre">Image.resize()</span></tt>
+method&#8217;s <tt class="docutils literal"><span class="pre">blur</span></tt> parameter from <a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Rational" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Rational</span></tt></a> to
+<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Real" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Real</span></tt></a>.</li>
+<li>Fixed a bug of raising <a class="reference external" href="http://docs.python.org/library/exceptions.html#exceptions.ValueError" title="(in Python v2.7)"><tt class="xref py py-exc docutils literal"><span class="pre">ValueError</span></tt></a> when invalid <tt class="docutils literal"><span class="pre">filter</span></tt>
+has passed to <tt class="xref py py-meth docutils literal"><span class="pre">Image.resize()</span></tt> method.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-7">
+<h3>Version 0.1.7<a class="headerlink" href="#version-0-1-7" title="Permalink to this headline">¶</a></h3>
+<p>Released on November 10, 2011. Still alpha version.</p>
+<ul class="simple">
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.mimetype" title="wand.image.Image.mimetype"><tt class="xref py py-attr docutils literal"><span class="pre">Image.mimetype</span></tt></a> property.</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.crop()</span></tt> method for in-place
+crop.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-6">
+<h3>Version 0.1.6<a class="headerlink" href="#version-0-1-6" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 31, 2011. Still alpha version.</p>
+<ul class="simple">
+<li>Removed a side effect of <a class="reference internal" href="wand/image.html#wand.image.Image.make_blob" title="wand.image.Image.make_blob"><tt class="xref py py-class docutils literal"><span class="pre">Image.make_blob()</span></tt></a> method that changes the image format silently.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.format" title="wand.image.Image.format"><tt class="xref py py-attr docutils literal"><span class="pre">Image.format</span></tt></a> property.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.convert" title="wand.image.Image.convert"><tt class="xref py py-meth docutils literal"><span class="pre">Image.convert()</span></tt></a> method.</li>
+<li>Fixed a bug about Python 2.6 compatibility.</li>
+<li>Use the internal representation of <tt class="xref c c-type docutils literal"><span class="pre">PixelWand</span></tt> instead of
+the string representaion for <a class="reference internal" href="wand/color.html#wand.color.Color" title="wand.color.Color"><tt class="xref py py-class docutils literal"><span class="pre">Color</span></tt></a> type.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-5">
+<h3>Version 0.1.5<a class="headerlink" href="#version-0-1-5" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 28, 2011. Slightly mature alpha version.</p>
+<ul class="simple">
+<li>Now <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> can read Python file objects by <tt class="docutils literal"><span class="pre">file</span></tt>
+keyword argument.</li>
+<li>Now <a class="reference internal" href="wand/image.html#wand.image.Image.save" title="wand.image.Image.save"><tt class="xref py py-class docutils literal"><span class="pre">Image.save()</span></tt></a> method can write into
+Python file objects by <tt class="docutils literal"><span class="pre">file</span></tt> keyword argument.</li>
+<li><a class="reference internal" href="wand/image.html#wand.image.Image.make_blob" title="wand.image.Image.make_blob"><tt class="xref py py-class docutils literal"><span class="pre">Image.make_blob()</span></tt></a>&#8216;s <tt class="docutils literal"><span class="pre">format</span></tt>
+argument becomes omittable.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-4">
+<h3>Version 0.1.4<a class="headerlink" href="#version-0-1-4" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 27, 2011. Hotfix of the malformed Python package.</p>
+</div>
+<div class="section" id="version-0-1-3">
+<h3>Version 0.1.3<a class="headerlink" href="#version-0-1-3" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 27, 2011. Slightly mature alpha version.</p>
+<ul class="simple">
+<li>Pixel getter for <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a>.</li>
+<li>Row getter for <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a>.</li>
+<li>Mac compatibility.</li>
+<li>Windows compatibility.</li>
+<li>64-bit processor compatibility.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-2">
+<h3>Version 0.1.2<a class="headerlink" href="#version-0-1-2" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 16, 2011. Still alpha version.</p>
+<ul class="simple">
+<li><a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> implements iterable interface.</li>
+<li>Added <a class="reference internal" href="wand/color.html#module-wand.color" title="wand.color"><tt class="xref py py-mod docutils literal"><span class="pre">wand.color</span></tt></a> module.</li>
+<li>Added the abstract base class of all Wand resource objects:
+<a class="reference internal" href="wand/resource.html#wand.resource.Resource" title="wand.resource.Resource"><tt class="xref py py-class docutils literal"><span class="pre">wand.resource.Resource</span></tt></a>.</li>
+<li><a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> implements slicing.</li>
+<li>Cropping <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> using its slicing operator.</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-1">
+<h3>Version 0.1.1<a class="headerlink" href="#version-0-1-1" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 4, 2011. Still alpha version.</p>
+<ul class="simple">
+<li>Now it handles errors and warnings properly and in natural way of Python.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.make_blob" title="wand.image.Image.make_blob"><tt class="xref py py-meth docutils literal"><span class="pre">Image.make_blob()</span></tt></a> method.</li>
+<li>Added <tt class="docutils literal"><span class="pre">blob</span></tt> parameter into <a class="reference internal" href="wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> constructor.</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.resize()</span></tt> method.</li>
+<li>Added <a class="reference internal" href="wand/image.html#wand.image.Image.save" title="wand.image.Image.save"><tt class="xref py py-meth docutils literal"><span class="pre">Image.save()</span></tt></a> method.</li>
+<li>Added <tt class="xref py py-meth docutils literal"><span class="pre">Image.clone()</span></tt> method.</li>
+<li>Drawed <a class="reference external" href="_static/wand.png">the pretty logo picture</a>
+(thanks to <a class="reference external" href="http://me2day.net/crocodile">Hyojin Choi</a>).</li>
+</ul>
+</div>
+<div class="section" id="version-0-1-0">
+<h3>Version 0.1.0<a class="headerlink" href="#version-0-1-0" title="Permalink to this headline">¶</a></h3>
+<p>Released on October 1, 2011. Very alpha version.</p>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

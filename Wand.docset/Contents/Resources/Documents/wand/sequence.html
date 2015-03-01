@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>wand.sequence — Sequences — Wand 0.4.0</title>
+<link href="../_static/wand.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="../_static/jquery.js" type="text/javascript"></script>
+<script src="../_static/underscore.js" type="text/javascript"></script>
+<script src="../_static/doctools.js" type="text/javascript"></script>
+<link href="../index.html" rel="top" title="Wand 0.4.0"/>
+<link href="../wand.html" rel="up" title="wand — Simple MagickWand API binding for Python"/>
+<link href="resource.html" rel="next" title="wand.resource — Global resource management"/>
+<link href="drawing.html" rel="prev" title="wand.drawing — Drawings"/>
+<link href="../_static/small_flask.css" media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="related">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="../genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="../py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="N" href="resource.html" title="wand.resource — Global resource management">next</a> |</li>
+<li class="right">
+<a accesskey="P" href="drawing.html" title="wand.drawing — Drawings">previous</a> |</li>
+<li><a href="../index.html">Wand</a> »</li>
+<li><a accesskey="U" href="../wand.html"><tt class="docutils literal"><span class="pre">wand</span></tt> — Simple MagickWand API binding for Python</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body">
+<span class="target" id="module-wand.sequence"></span><div class="section" id="wand-sequence-sequences"><a name="//apple_ref/cpp/Module/wand.sequence"></a>
+<h1><a class="reference internal" href="#module-wand.sequence" title="wand.sequence"><tt class="xref py py-mod docutils literal"><span class="pre">wand.sequence</span></tt></a> — Sequences<a class="headerlink" href="#wand-sequence-sequences" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<dl class="class">
+<dt id="wand.sequence.Sequence"><a name="//apple_ref/cpp/Class/wand.sequence.Sequence"></a>
+<em class="property">class </em><tt class="descclassname">wand.sequence.</tt><tt class="descname">Sequence</tt><big>(</big><em>image</em><big>)</big><a class="headerlink" href="#wand.sequence.Sequence" title="Permalink to this definition">¶</a></dt>
+<dd><p>The list-like object that contains every <a class="reference internal" href="#wand.sequence.SingleImage" title="wand.sequence.SingleImage"><tt class="xref py py-class docutils literal"><span class="pre">SingleImage</span></tt></a>
+in the <a class="reference internal" href="image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> container.  It implements
+<a class="reference external" href="http://docs.python.org/library/collections.html#collections.Sequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.Sequence</span></tt></a> prototocol.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<dl class="attribute">
+<dt id="wand.sequence.Sequence.current_index"><a name="//apple_ref/cpp/Attribute/wand.sequence.Sequence.current_index"></a>
+<tt class="descname">current_index</tt><a class="headerlink" href="#wand.sequence.Sequence.current_index" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) The current index of
+its internal iterator.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s only for internal use.</p>
+</div>
+</dd></dl>
+<dl class="method">
+<dt id="wand.sequence.Sequence.index_context"><a name="//apple_ref/cpp/Method/wand.sequence.Sequence.index_context"></a>
+<tt class="descname">index_context</tt><big>(</big><em>*args</em>, <em>**kwds</em><big>)</big><a class="headerlink" href="#wand.sequence.Sequence.index_context" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scoped setter of <a class="reference internal" href="#wand.sequence.Sequence.current_index" title="wand.sequence.Sequence.current_index"><tt class="xref py py-attr docutils literal"><span class="pre">current_index</span></tt></a>.  Should be
+used for <a class="reference external" href="http://docs.python.org/reference/compound_stmts.html#with" title="(in Python v2.7)"><tt class="xref std std-keyword docutils literal"><span class="pre">with</span></tt></a> statement e.g.:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">image</span><span class="o">.</span><span class="n">sequence</span><span class="o">.</span><span class="n">index_context</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="k">print</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It’s only for internal use.</p>
+</div>
+</dd></dl>
+</dd></dl>
+<dl class="class">
+<dt id="wand.sequence.SingleImage"><a name="//apple_ref/cpp/Class/wand.sequence.SingleImage"></a>
+<em class="property">class </em><tt class="descclassname">wand.sequence.</tt><tt class="descname">SingleImage</tt><big>(</big><em>wand</em>, <em>container</em>, <em>c_original_resource</em><big>)</big><a class="headerlink" href="#wand.sequence.SingleImage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Each single image in <a class="reference internal" href="image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> container.
+For example, it can be a frame of GIF animation.</p>
+<p>Note that all changes on single images are invisible to their
+containers until they are <tt class="xref py py-meth docutils literal"><span class="pre">close()</span></tt>d
+(<a class="reference internal" href="resource.html#wand.resource.Resource.destroy" title="wand.resource.Resource.destroy"><tt class="xref py py-meth docutils literal"><span class="pre">destroy()</span></tt></a>ed).</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<dl class="attribute">
+<dt id="wand.sequence.SingleImage.container"><a name="//apple_ref/cpp/Attribute/wand.sequence.SingleImage.container"></a>
+<tt class="descname">container</tt><em class="property"> = None</em><a class="headerlink" href="#wand.sequence.SingleImage.container" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference internal" href="image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">wand.image.Image</span></tt></a>) The container image.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.sequence.SingleImage.delay"><a name="//apple_ref/cpp/Attribute/wand.sequence.SingleImage.delay"></a>
+<tt class="descname">delay</tt><a class="headerlink" href="#wand.sequence.SingleImage.delay" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) The delay to pause before display
+the next image (in the <a class="reference internal" href="image.html#wand.image.BaseImage.sequence" title="wand.image.BaseImage.sequence"><tt class="xref py py-attr docutils literal"><span class="pre">sequence</span></tt></a> of
+its <a class="reference internal" href="#wand.sequence.SingleImage.container" title="wand.sequence.SingleImage.container"><tt class="xref py py-attr docutils literal"><span class="pre">container</span></tt></a>).  It’s hundredths of a second.</p>
+</dd></dl>
+<dl class="attribute">
+<dt id="wand.sequence.SingleImage.index"><a name="//apple_ref/cpp/Attribute/wand.sequence.SingleImage.index"></a>
+<tt class="descname">index</tt><a class="headerlink" href="#wand.sequence.SingleImage.index" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) The index of the single image in
+the <a class="reference internal" href="#wand.sequence.SingleImage.container" title="wand.sequence.SingleImage.container"><tt class="xref py py-attr docutils literal"><span class="pre">container</span></tt></a> image.</p>
+</dd></dl>
+</dd></dl>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer">
+    © Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+</body>
+</html>

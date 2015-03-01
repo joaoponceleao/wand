@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Colorspace &mdash; Wand 0.4.0</title>
+    
+    <link rel="stylesheet" href="../_static/wand.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Wand 0.4.0" href="../index.html" />
+    <link rel="next" title="Reading EXIF" href="exif.html" />
+    <link rel="prev" title="Drawing" href="draw.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="exif.html" title="Reading EXIF"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="draw.html" title="Drawing"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Wand</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="colorspace">
+<h1>Colorspace<a class="headerlink" href="#colorspace" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="image-types">
+<h2>Image types<a class="headerlink" href="#image-types" title="Permalink to this headline">¶</a></h2>
+<p>Every <a class="reference internal" href="../wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> object has  <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.type" title="wand.image.BaseImage.type"><tt class="xref py py-attr docutils literal"><span class="pre">type</span></tt></a>
+property which identifies its colorspace.  The value can be one of
+<a class="reference internal" href="../wand/image.html#wand.image.IMAGE_TYPES" title="wand.image.IMAGE_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">IMAGE_TYPES</span></tt></a> enumeration, and set of its available
+values depends on its <a class="reference internal" href="../wand/image.html#wand.image.Image.format" title="wand.image.Image.format"><tt class="xref py py-attr docutils literal"><span class="pre">format</span></tt></a> as well.  For example,
+<tt class="docutils literal"><span class="pre">'grayscale'</span></tt> isn&#8217;t available on JPEG.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/bilevel.gif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">img</span><span class="o">.</span><span class="n">type</span>
+<span class="gp">...</span>
+<span class="go">&#39;bilevel&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/sasha.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">img2</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="n">img2</span><span class="o">.</span><span class="n">type</span>
+<span class="gp">...</span>
+<span class="go">&#39;truecolor&#39;</span>
+</pre></div>
+</div>
+<p>You can change this value:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/bilevel.gif&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="s">&#39;truecolor&#39;</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;truecolor.gif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference external" href="http://www.imagemagick.org/script/command-line-options.php#type">-type</a> &#8212; ImageMagick: command-line-Options</dt>
+<dd>Corresponding command-line option of <strong class="program">convert</strong> program.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="enable-alpha-channel">
+<h2>Enable alpha channel<a class="headerlink" href="#enable-alpha-channel" title="Permalink to this headline">¶</a></h2>
+<p>You can find whether an image has alpha channel and change it to have or
+not to have the alpha channel using <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.alpha_channel" title="wand.image.BaseImage.alpha_channel"><tt class="xref py py-attr docutils literal"><span class="pre">alpha_channel</span></tt></a>
+property, which is preserving a <a class="reference external" href="http://docs.python.org/library/functions.html#bool" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">bool</span></tt></a> value.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/sasha.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="n">img</span><span class="o">.</span><span class="n">alpha_channel</span>
+<span class="gp">...</span>
+<span class="go">False</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/croptest.png&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+<span class="gp">... </span>   <span class="n">img</span><span class="o">.</span><span class="n">alpha_channel</span>
+<span class="gp">...</span>
+<span class="go">True</span>
+</pre></div>
+</div>
+<p>It&#8217;s a writable property:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/sasha.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+    <span class="n">img</span><span class="o">.</span><span class="n">alpha_channel</span> <span class="o">=</span> <span class="bp">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

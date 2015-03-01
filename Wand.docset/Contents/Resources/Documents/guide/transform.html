@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Transformation &mdash; Wand 0.4.0</title>
+    
+    <link rel="stylesheet" href="../_static/wand.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Wand 0.4.0" href="../index.html" />
+    <link rel="next" title="Drawing" href="draw.html" />
+    <link rel="prev" title="Resizing and cropping" href="resizecrop.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="draw.html" title="Drawing"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="resizecrop.html" title="Resizing and cropping"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Wand</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="transformation">
+<h1>Transformation<a class="headerlink" href="#transformation" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The image <tt class="file docutils literal"><span class="pre">transform.jpg</span></tt> used in this docs is taken by
+<a class="reference external" href="http://megantracephoto.tumblr.com/">Megan Trace</a>, and licensed under <a class="reference external" href="http://creativecommons.org/licenses/by-nc/2.0/deed.en">CC BY-NC 2.0</a>.
+It can be found the <a class="reference external" href="http://www.flickr.com/photos/megantrace/6234830561/">original photography from Flickr</a>.</p>
+</div>
+<div class="section" id="rotation">
+<h2>Rotation<a class="headerlink" href="#rotation" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.1.8.</span></p>
+</div>
+<p><a class="reference internal" href="../wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> object provides a simple method to rotate images:
+<a class="reference internal" href="../wand/image.html#wand.image.BaseImage.rotate" title="wand.image.BaseImage.rotate"><tt class="xref py py-meth docutils literal"><span class="pre">rotate()</span></tt></a>.  It takes a <tt class="docutils literal"><span class="pre">degree</span></tt> which can be 0
+to 359.  (Actually you can pass 360, 361, or more but it will be the same to
+0, 1, or more respectively.)</p>
+<p>For example, where the given image <tt class="file docutils literal"><span class="pre">transform.jpg</span></tt>:</p>
+<img alt="transform.jpg" src="../_images/transform.jpg" />
+<p>The below code makes the image rotated 90° to right:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">image</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">as</span> <span class="n">rotated</span><span class="p">:</span>
+        <span class="n">rotated</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">90</span><span class="p">)</span>
+        <span class="n">rotated</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform-rotated-90.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The generated image <tt class="file docutils literal"><span class="pre">transform-rotated-90.jpg</span></tt> looks like:</p>
+<img alt="transform-rotated-90.jpg" src="../_images/transform-rotated-90.jpg" />
+<p>If <tt class="docutils literal"><span class="pre">degree</span></tt> is not multiples of 90, the optional parameter <tt class="docutils literal"><span class="pre">background</span></tt>
+will help (its default is transparent):</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">image</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">as</span> <span class="n">rotated</span><span class="p">:</span>
+        <span class="n">rotated</span><span class="o">.</span><span class="n">rotate</span><span class="p">(</span><span class="mi">135</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;rgb(229,221,112)&#39;</span><span class="p">))</span>
+        <span class="n">rotated</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform-rotated-135.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The generated image <tt class="file docutils literal"><span class="pre">transform-rotated-135.jpg</span></tt> looks like:</p>
+<img alt="transform-rotated-135.jpg" src="../_images/transform-rotated-135.jpg" />
+</div>
+<div class="section" id="flip-and-flop">
+<h2>Flip and flop<a class="headerlink" href="#flip-and-flop" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<p>You can make a mirror image by reflecting the pixels around the central
+x- or y-axis.  For example, where the given image <tt class="file docutils literal"><span class="pre">transform.jpg</span></tt>:</p>
+<img alt="transform.jpg" src="../_images/transform.jpg" />
+<p>The following code flips the image using <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.flip" title="wand.image.BaseImage.flip"><tt class="xref py py-meth docutils literal"><span class="pre">Image.flip()</span></tt></a> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">image</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">as</span> <span class="n">flipped</span><span class="p">:</span>
+        <span class="n">flipped</span><span class="o">.</span><span class="n">flip</span><span class="p">()</span>
+        <span class="n">flipped</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform-flipped.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The image <tt class="file docutils literal"><span class="pre">transform-flipped.jpg</span></tt> generated by the above code looks like:</p>
+<img alt="transform-flipped.jpg" src="../_images/transform-flipped.jpg" />
+<p>As like <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.flip" title="wand.image.BaseImage.flip"><tt class="xref py py-meth docutils literal"><span class="pre">flip()</span></tt></a>,
+<a class="reference internal" href="../wand/image.html#wand.image.BaseImage.flop" title="wand.image.BaseImage.flop"><tt class="xref py py-meth docutils literal"><span class="pre">flop()</span></tt></a> does the same thing except it doesn&#8217;t
+make a vertical mirror image but horizontal:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">image</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span> <span class="k">as</span> <span class="n">flopped</span><span class="p">:</span>
+        <span class="n">flopped</span><span class="o">.</span><span class="n">flop</span><span class="p">()</span>
+        <span class="n">flopped</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;transform-flopped.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The image <tt class="file docutils literal"><span class="pre">transform-flopped.jpg</span></tt> generated by the above code looks like:</p>
+<img alt="transform-flopped.jpg" src="../_images/transform-flopped.jpg" />
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

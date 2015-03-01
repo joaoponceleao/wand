@@ -1,0 +1,610 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Drawing &mdash; Wand 0.4.0</title>
+    
+    <link rel="stylesheet" href="../_static/wand.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Wand 0.4.0" href="../index.html" />
+    <link rel="next" title="Colorspace" href="colorspace.html" />
+    <link rel="prev" title="Transformation" href="transform.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="colorspace.html" title="Colorspace"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="transform.html" title="Transformation"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Wand</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="drawing">
+<h1>Drawing<a class="headerlink" href="#drawing" title="Permalink to this headline">¶</a></h1>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+<p>The <a class="reference internal" href="../wand/drawing.html#module-wand.drawing" title="wand.drawing"><tt class="xref py py-mod docutils literal"><span class="pre">wand.drawing</span></tt></a> module provides some basic drawing functions.
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing" title="wand.drawing.Drawing"><tt class="xref py py-class docutils literal"><span class="pre">wand.drawing.Drawing</span></tt></a> object buffers instructions for drawing
+shapes into images, and then it can draw these shapes into zero or more
+images.</p>
+<p>It&#8217;s also callable and takes an <a class="reference internal" href="../wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> object:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="c"># does something with ``draw`` object,</span>
+    <span class="c"># and then...</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wandtests/assets/beach.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="arc">
+<span id="draw-arc"></span><h2>Arc<a class="headerlink" href="#arc" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>Arcs can be drawn by using <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.arc" title="wand.drawing.Drawing.arc"><tt class="xref py py-meth docutils literal"><span class="pre">arc()</span></tt></a> method. You&#8217;ll
+need to define three pairs of (x, y) coordinates. First &amp; second pair of
+coordinates will be the minimum bounding rectangle, and the last pair define
+the starting &amp; ending degree.</p>
+<p>An example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">arc</span><span class="p">((</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span>  <span class="c"># Stating point</span>
+             <span class="p">(</span> <span class="mi">75</span><span class="p">,</span> <span class="mi">75</span><span class="p">),</span>  <span class="c"># Ending point</span>
+             <span class="p">(</span><span class="mi">135</span><span class="p">,</span><span class="o">-</span><span class="mi">45</span><span class="p">))</span>  <span class="c"># From bottom left around to top right</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+               <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+               <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+        <span class="n">draw</span><span class="o">.</span><span class="n">draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+        <span class="n">img</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;draw-arc.gif&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-arc.gif" src="../_images/draw-arc.gif" />
+</div>
+<div class="section" id="bezier">
+<span id="draw-bezier"></span><h2>Bezier<a class="headerlink" href="#bezier" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>You can draw bezier curves using <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.bezier" title="wand.drawing.Drawing.bezier"><tt class="xref py py-meth docutils literal"><span class="pre">bezier()</span></tt></a> method.
+This method requires at least four points to determine a bezier curve. Given
+as a list of (x, y) coordinates. The first &amp; last pair of coordinates are
+treated as start &amp; end, and the second &amp; third pair of coordinates act as
+controls.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">10</span><span class="p">,</span><span class="mi">50</span><span class="p">),</span>  <span class="c"># Start point</span>
+              <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">10</span><span class="p">),</span>  <span class="c"># First control</span>
+              <span class="p">(</span><span class="mi">50</span><span class="p">,</span><span class="mi">90</span><span class="p">),</span>  <span class="c"># Second control</span>
+              <span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="mi">50</span><span class="p">)]</span>  <span class="c"># End point</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">bezier</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+               <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span>
+               <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-bezier.gif" src="../_images/draw-bezier.gif" />
+<p>Control width &amp; color of curve with the drawing properties:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_color" title="wand.drawing.Drawing.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="circle">
+<span id="draw-circle"></span><h2>Circle<a class="headerlink" href="#circle" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>You can draw circles using <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.circle" title="wand.drawing.Drawing.circle"><tt class="xref py py-meth docutils literal"><span class="pre">circle()</span></tt></a> method.
+Circles are drawn by defining two pairs of (x, y) coordinates. First coordinate
+for the center &#8220;<tt class="docutils literal"><span class="pre">origin</span></tt>&#8221; point, and a second pair for the outer
+<tt class="docutils literal"><span class="pre">perimeter</span></tt>. For example, the following code draws a circle in the middle of
+the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">circle</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="c"># Center point</span>
+                <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">))</span> <span class="c"># Perimeter point</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-circle.gif" src="../_images/draw-circle.gif" />
+</div>
+<div class="section" id="color-matte">
+<span id="draw-color-and-matte"></span><h2>Color &amp; Matte<a class="headerlink" href="#color-matte" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>You can draw with colors directly on the coordinate system of an image. Define
+which color to set by setting <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a>.
+The behavior of <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.color" title="wand.drawing.Drawing.color"><tt class="xref py py-meth docutils literal"><span class="pre">color()</span></tt></a> is controlled by setting
+one of <a class="reference internal" href="../wand/drawing.html#wand.drawing.PAINT_METHOD_TYPES" title="wand.drawing.PAINT_METHOD_TYPES"><tt class="xref py py-const docutils literal"><span class="pre">PAINT_METHOD_TYPES</span></tt></a> paint methods.</p>
+<blockquote>
+<div><ul class="simple">
+<li><tt class="docutils literal"><span class="pre">'point'</span></tt> alters a single pixel.</li>
+<li><tt class="docutils literal"><span class="pre">'replace'</span></tt> swaps on color for another. Threshold is influenced by
+<tt class="xref py py-attr docutils literal"><span class="pre">fuzz</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">'floodfill'</span></tt> fills area of a color influenced by
+<tt class="xref py py-attr docutils literal"><span class="pre">fuzz</span></tt>.</li>
+<li><tt class="docutils literal"><span class="pre">'filltoborder'</span></tt> fills area of a color until border defined by
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.border_color" title="wand.drawing.Drawing.border_color"><tt class="xref py py-attr docutils literal"><span class="pre">border_color</span></tt></a>.</li>
+<li><tt class="docutils literal"><span class="pre">'reset'</span></tt> replaces the whole image to a single color.</li>
+</ul>
+</div></blockquote>
+<p>Example fill all to green boarder:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">border_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;green&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;blue&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s">&#39;filltoborder&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.matte" title="wand.drawing.Drawing.matte"><tt class="xref py py-meth docutils literal"><span class="pre">matte()</span></tt></a> method is identical to
+the <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.color" title="wand.drawing.Drawing.color"><tt class="xref py py-meth docutils literal"><span class="pre">color()</span></tt></a>
+method above, but alters the alpha channel of the color area selected. Colors
+can be manipulated, but not replaced.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="bp">None</span>  <span class="c"># or Color(&#39;none&#39;)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">matte</span><span class="p">(</span><span class="mi">15</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="s">&#39;floodfill&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="composite">
+<span id="draw-composite"></span><h2>Composite<a class="headerlink" href="#composite" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>Similar to <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.composite_channel" title="wand.image.BaseImage.composite_channel"><tt class="xref py py-meth docutils literal"><span class="pre">composite_channel()</span></tt></a>, this
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.composite" title="wand.drawing.Drawing.composite"><tt class="xref py py-meth docutils literal"><span class="pre">composite()</span></tt></a> method will render a given image on
+top of the drawing subject image following the
+<a class="reference internal" href="../wand/image.html#wand.image.COMPOSITE_OPERATORS" title="wand.image.COMPOSITE_OPERATORS"><tt class="xref py py-const docutils literal"><span class="pre">COMPOSITE_OPERATORS</span></tt></a> options. An compositing image must be
+given with a destination <tt class="docutils literal"><span class="pre">top</span></tt>, <tt class="docutils literal"><span class="pre">left</span></tt>, <tt class="docutils literal"><span class="pre">width</span></tt>, and <tt class="docutils literal"><span class="pre">height</span></tt> values.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span><span class="p">,</span> <span class="n">COMPOSITE_OPERATORS</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.display</span> <span class="kn">import</span> <span class="n">display</span>
+
+<span class="n">wizard</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;wizard:&#39;</span><span class="p">)</span>
+<span class="n">rose</span> <span class="o">=</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;rose:&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">o</span> <span class="ow">in</span> <span class="n">COMPOSITE_OPERATORS</span><span class="p">:</span>
+  <span class="n">w</span> <span class="o">=</span> <span class="n">wizard</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+  <span class="n">r</span> <span class="o">=</span> <span class="n">rose</span><span class="o">.</span><span class="n">clone</span><span class="p">()</span>
+  <span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">composite</span><span class="p">(</span><span class="n">operator</span><span class="o">=</span><span class="n">o</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mi">175</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">250</span><span class="p">,</span>
+                   <span class="n">width</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">r</span><span class="o">.</span><span class="n">height</span><span class="p">,</span> <span class="n">image</span><span class="o">=</span><span class="n">r</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="ellipse">
+<span id="draw-ellipse"></span><h2>Ellipse<a class="headerlink" href="#ellipse" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>Ellipse can be drawn by using the <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.ellipse" title="wand.drawing.Drawing.ellipse"><tt class="xref py py-meth docutils literal"><span class="pre">ellipse()</span></tt></a> method.
+Like drawing circles, the ellipse requires a <tt class="docutils literal"><span class="pre">origin</span></tt> point, however, a pair
+of (x, y) <tt class="docutils literal"><span class="pre">radius</span></tt> are used in relationship to the <tt class="docutils literal"><span class="pre">origin</span></tt> coordinate. By
+default a complete &#8220;closed&#8221; ellipse is drawn. To draw a partial ellipse, provide
+a pair of starting &amp; ending degrees as the third parameter.</p>
+<p>An example of a full ellipse:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">ellipse</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="c"># Origin (center) point</span>
+                 <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">))</span> <span class="c"># 80px wide, and 40px tall</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-ellipse-full.gif" src="../_images/draw-ellipse-full.gif" />
+<p>Same example as above, but with a half-partial ellipse defined by the third
+parameter:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">ellipse</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="c"># Origin (center) point</span>
+             <span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">20</span><span class="p">),</span> <span class="c"># 80px wide, and 40px tall</span>
+             <span class="p">(</span><span class="mi">90</span><span class="p">,</span><span class="o">-</span><span class="mi">90</span><span class="p">))</span> <span class="c"># Draw half of ellipse from bottom to top</span>
+</pre></div>
+</div>
+<img alt="draw-ellipse-part.gif" src="../_images/draw-ellipse-part.gif" />
+</div>
+<div class="section" id="lines">
+<span id="draw-lines"></span><h2>Lines<a class="headerlink" href="#lines" title="Permalink to this headline">¶</a></h2>
+<p>You can draw lines using <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.line" title="wand.drawing.Drawing.line"><tt class="xref py py-meth docutils literal"><span class="pre">line()</span></tt></a> method.
+It simply takes two (x, y) coordinates for start and end of a line.
+For example, the following code draws a diagonal line into the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or you can turn this diagonal line upside down:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="p">),</span> <span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The line color is determined by <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a>
+property, and you can change this of course.  The following code draws
+a red diagonal line into the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;red&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">color</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">color</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span> <span class="n">image</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+    <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="paths">
+<span id="draw-paths"></span><h2>Paths<a class="headerlink" href="#paths" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>Paths can be drawn by using any collection of path functions between
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_start" title="wand.drawing.Drawing.path_start"><tt class="xref py py-meth docutils literal"><span class="pre">path_start()</span></tt></a> and
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_finish" title="wand.drawing.Drawing.path_finish"><tt class="xref py py-meth docutils literal"><span class="pre">path_finish()</span></tt></a> methods. The available path functions
+are:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_close" title="wand.drawing.Drawing.path_close"><tt class="xref py py-meth docutils literal"><span class="pre">path_close()</span></tt></a> draws a path from last point to first.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_curve" title="wand.drawing.Drawing.path_curve"><tt class="xref py py-meth docutils literal"><span class="pre">path_curve()</span></tt></a> draws a cubic bezier curve.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_curve_to_quadratic_bezier" title="wand.drawing.Drawing.path_curve_to_quadratic_bezier"><tt class="xref py py-meth docutils literal"><span class="pre">path_curve_to_quadratic_bezier()</span></tt></a> draws a quadratic bezier curve.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_elliptic_arc" title="wand.drawing.Drawing.path_elliptic_arc"><tt class="xref py py-meth docutils literal"><span class="pre">path_elliptic_arc()</span></tt></a> draws an elliptical arc.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_horizontal_line" title="wand.drawing.Drawing.path_horizontal_line"><tt class="xref py py-meth docutils literal"><span class="pre">path_horizontal_line()</span></tt></a> draws a horizontal line.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_line" title="wand.drawing.Drawing.path_line"><tt class="xref py py-meth docutils literal"><span class="pre">path_line()</span></tt></a> draws a line path.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_move" title="wand.drawing.Drawing.path_move"><tt class="xref py py-meth docutils literal"><span class="pre">path_move()</span></tt></a> adjust current point without drawing.</li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_vertical_line" title="wand.drawing.Drawing.path_vertical_line"><tt class="xref py py-meth docutils literal"><span class="pre">path_vertical_line()</span></tt></a> draws a vertical line.</li>
+</ul>
+<p>Each path method expects a destination point, and will draw from the current
+point to the new point. The destination point will become the new current point
+for the next applied path method. Destination points are given in the
+form of (<tt class="docutils literal"><span class="pre">x</span></tt>, <tt class="docutils literal"><span class="pre">y</span></tt>) coordinates to the <tt class="docutils literal"><span class="pre">to</span></tt> parameter, and can by relative
+or absolute to the current point by setting the <tt class="docutils literal"><span class="pre">relative</span></tt> flag. The
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_curve" title="wand.drawing.Drawing.path_curve"><tt class="xref py py-meth docutils literal"><span class="pre">path_curve()</span></tt></a> and
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.path_curve_to_quadratic_bezier" title="wand.drawing.Drawing.path_curve_to_quadratic_bezier"><tt class="xref py py-meth docutils literal"><span class="pre">path_curve_to_quadratic_bezier()</span></tt></a> expect
+additional <tt class="docutils literal"><span class="pre">control</span></tt> points, and can complement previous drawn curves by
+setting a <tt class="docutils literal"><span class="pre">smooth</span></tt> flag. When the <tt class="docutils literal"><span class="pre">smooth</span></tt> flag is set to <tt class="docutils literal"><span class="pre">True</span></tt> the first
+control point is assumed to be the reflection of the last defined control point.</p>
+<p>For example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_start</span><span class="p">()</span>
+    <span class="c"># Start middle-left</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_move</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
+    <span class="c"># Curve accross top-left to center</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_curve</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">controls</span><span class="o">=</span><span class="p">[(</span><span class="mi">10</span><span class="p">,</span> <span class="o">-</span><span class="mi">40</span><span class="p">),</span> <span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="o">-</span><span class="mi">40</span><span class="p">)],</span>
+                    <span class="n">relative</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># Continue curve accross bottom-right</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_curve</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">0</span><span class="p">),</span>
+                    <span class="n">controls</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">),</span>
+                    <span class="n">smooth</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                    <span class="n">relative</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="c"># Line to top-right</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_vertical_line</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+    <span class="c"># Diagonal line to bottom-left</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_line</span><span class="p">(</span><span class="n">to</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">90</span><span class="p">))</span>
+    <span class="c"># Close first &amp; last points</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_close</span><span class="p">()</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">path_finish</span><span class="p">()</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-path.gif" src="../_images/draw-path.gif" />
+</div>
+<div class="section" id="point">
+<span id="draw-point"></span><h2>Point<a class="headerlink" href="#point" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>You can draw points by using <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.point" title="wand.drawing.Drawing.point"><tt class="xref py py-meth docutils literal"><span class="pre">point()</span></tt></a> method.
+It simply takes two <tt class="docutils literal"><span class="pre">x</span></tt>, <tt class="docutils literal"><span class="pre">y</span></tt> arguments for the point coordinate.</p>
+<p>The following example will draw points following a math function across a given
+<tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+<span class="kn">import</span> <span class="nn">math</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">xrange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">100</span><span class="p">):</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="mi">4</span>
+        <span class="n">draw</span><span class="o">.</span><span class="n">point</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">+</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-point-math.gif" src="../_images/draw-point-math.gif" />
+<p>Color of the point can be defined by setting the following property</p>
+<ul class="simple">
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="polygon">
+<span id="draw-polygon"></span><h2>Polygon<a class="headerlink" href="#polygon" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>Complex shapes can be created with the <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.polygon" title="wand.drawing.Drawing.polygon"><tt class="xref py py-meth docutils literal"><span class="pre">polygon()</span></tt></a>
+method. You can draw a polygon by given this method a list of points. Stroke
+line will automatically close between first &amp; last point.</p>
+<p>For example, the following code will draw a triangle into the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">)]</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">polygon</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-polygon.gif" src="../_images/draw-polygon.gif" />
+<p>Control the fill &amp; stroke with the following properties:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_color" title="wand.drawing.Drawing.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_dash_array" title="wand.drawing.Drawing.stroke_dash_array"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_array</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_dash_offset" title="wand.drawing.Drawing.stroke_dash_offset"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_offset</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_line_cap" title="wand.drawing.Drawing.stroke_line_cap"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_cap</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_line_join" title="wand.drawing.Drawing.stroke_line_join"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_join</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_miter_limit" title="wand.drawing.Drawing.stroke_miter_limit"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_miter_limit</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_opacity" title="wand.drawing.Drawing.stroke_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_opacity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_opacity" title="wand.drawing.Drawing.fill_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">fill_opacity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_rule" title="wand.drawing.Drawing.fill_rule"><tt class="xref py py-attr docutils literal"><span class="pre">fill_rule</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="polyline">
+<span id="draw-polyline"></span><h2>Polyline<a class="headerlink" href="#polyline" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>Identical to <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.polygon" title="wand.drawing.Drawing.polygon"><tt class="xref py py-meth docutils literal"><span class="pre">polygon()</span></tt></a>, except
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.polyline" title="wand.drawing.Drawing.polyline"><tt class="xref py py-meth docutils literal"><span class="pre">polyline()</span></tt></a> will not close the stroke line
+between the first &amp; last point.</p>
+<p>For example, the following code will draw a two line path on the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+<span class="k">with</span> <span class="n">Drawing</span><span class="p">()</span> <span class="k">as</span> <span class="n">draw</span><span class="p">:</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">)</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;white&#39;</span><span class="p">)</span>
+    <span class="n">points</span> <span class="o">=</span> <span class="p">[(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">25</span><span class="p">),</span> <span class="p">(</span><span class="mi">75</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">75</span><span class="p">)]</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">polyline</span><span class="p">(</span><span class="n">points</span><span class="p">)</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="draw-polyline.gif" src="../_images/draw-polyline.gif" />
+<p>Control the fill &amp; stroke with the following properties:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_color" title="wand.drawing.Drawing.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_dash_array" title="wand.drawing.Drawing.stroke_dash_array"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_array</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_dash_offset" title="wand.drawing.Drawing.stroke_dash_offset"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_offset</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_line_cap" title="wand.drawing.Drawing.stroke_line_cap"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_cap</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_line_join" title="wand.drawing.Drawing.stroke_line_join"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_join</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_miter_limit" title="wand.drawing.Drawing.stroke_miter_limit"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_miter_limit</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_opacity" title="wand.drawing.Drawing.stroke_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_opacity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_opacity" title="wand.drawing.Drawing.fill_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">fill_opacity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_rule" title="wand.drawing.Drawing.fill_rule"><tt class="xref py py-attr docutils literal"><span class="pre">fill_rule</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="push-pop">
+<span id="draw-push-pop"></span><h2>Push &amp; Pop<a class="headerlink" href="#push-pop" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.4.0.</span></p>
+</div>
+<p>When working with complex vector graphics, you can use ImageMagick&#8217;s internal
+graphic-context stack to manage different styles &amp; operations. The methods
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.push" title="wand.drawing.Drawing.push"><tt class="xref py py-meth docutils literal"><span class="pre">push()</span></tt></a>, <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.push_clip_path" title="wand.drawing.Drawing.push_clip_path"><tt class="xref py py-meth docutils literal"><span class="pre">push_clip_path()</span></tt></a>,
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.push_defs" title="wand.drawing.Drawing.push_defs"><tt class="xref py py-meth docutils literal"><span class="pre">push_defs()</span></tt></a>, and <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.push_pattern" title="wand.drawing.Drawing.push_pattern"><tt class="xref py py-meth docutils literal"><span class="pre">push_pattern()</span></tt></a>
+are used to mark the beginning of a sub-routine. The clip path &amp; pattern methods
+take a name based identifier argument, and can be referenced at a latter point
+with <tt class="xref py py-attr docutils literal"><span class="pre">clip_path</span></tt>, or
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.set_fill_pattern_url" title="wand.drawing.Drawing.set_fill_pattern_url"><tt class="xref py py-meth docutils literal"><span class="pre">set_fill_pattern_url()</span></tt></a> /
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.set_stroke_pattern_url" title="wand.drawing.Drawing.set_stroke_pattern_url"><tt class="xref py py-meth docutils literal"><span class="pre">set_stroke_pattern_url()</span></tt></a>
+respectively. With stack management, <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.pop" title="wand.drawing.Drawing.pop"><tt class="xref py py-meth docutils literal"><span class="pre">pop()</span></tt></a> is used
+to mark the end of a sub-routine, and return the graphical context to its
+pervious state before <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.push" title="wand.drawing.Drawing.push"><tt class="xref py py-meth docutils literal"><span class="pre">push()</span></tt></a> was invoked.
+Methods <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.pop_clip_path" title="wand.drawing.Drawing.pop_clip_path"><tt class="xref py py-meth docutils literal"><span class="pre">pop_clip_path()</span></tt></a>,
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.pop_defs" title="wand.drawing.Drawing.pop_defs"><tt class="xref py py-meth docutils literal"><span class="pre">pop_defs()</span></tt></a>, and <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.pop_pattern" title="wand.drawing.Drawing.pop_pattern"><tt class="xref py py-meth docutils literal"><span class="pre">pop_pattern()</span></tt></a>
+exist to match there pop counterparts.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+<span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.drawing</span> <span class="kn">import</span> <span class="n">Drawing</span>
+<span class="kn">from</span> <span class="nn">wand.compat</span> <span class="kn">import</span> <span class="n">nested</span>
+<span class="kn">from</span> <span class="nn">math</span> <span class="kn">import</span> <span class="n">cos</span><span class="p">,</span> <span class="n">pi</span><span class="p">,</span> <span class="n">sin</span>
+
+<span class="k">with</span> <span class="n">nested</span><span class="p">(</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">),</span>
+            <span class="n">Color</span><span class="p">(</span><span class="s">&#39;transparent&#39;</span><span class="p">),</span>
+            <span class="n">Drawing</span><span class="p">())</span> <span class="k">as</span> <span class="p">(</span><span class="n">bg</span><span class="p">,</span> <span class="n">fg</span><span class="p">,</span> <span class="n">draw</span><span class="p">):</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">stroke_width</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="n">draw</span><span class="o">.</span><span class="n">fill_color</span> <span class="o">=</span> <span class="n">fg</span>
+    <span class="k">for</span> <span class="n">degree</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">360</span><span class="p">,</span> <span class="mi">15</span><span class="p">):</span>
+        <span class="n">draw</span><span class="o">.</span><span class="n">push</span><span class="p">()</span>  <span class="c"># Grow stack</span>
+        <span class="n">draw</span><span class="o">.</span><span class="n">stroke_color</span> <span class="o">=</span> <span class="n">Color</span><span class="p">(</span><span class="s">&#39;hsl({0}%, 100%, 50%)&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">degree</span> <span class="o">*</span> <span class="mi">100</span> <span class="o">/</span> <span class="mi">360</span><span class="p">))</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">degree</span> <span class="o">/</span> <span class="mf">180.0</span> <span class="o">*</span> <span class="n">pi</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="mi">35</span> <span class="o">*</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">50</span>
+        <span class="n">y</span> <span class="o">=</span> <span class="mi">35</span> <span class="o">*</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">+</span> <span class="mi">50</span>
+        <span class="n">draw</span><span class="o">.</span><span class="n">line</span><span class="p">((</span><span class="mi">50</span><span class="p">,</span> <span class="mi">50</span><span class="p">),</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">))</span>
+        <span class="n">draw</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>  <span class="c"># Restore stack</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;lightblue&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">img</span><span class="p">:</span>
+        <span class="n">draw</span><span class="p">(</span><span class="n">img</span><span class="p">)</span>
+</pre></div>
+</div>
+<img alt="../_images/draw-push-pop.gif" src="../_images/draw-push-pop.gif" />
+</div>
+<div class="section" id="rectangles">
+<span id="draw-rectangles"></span><h2>Rectangles<a class="headerlink" href="#rectangles" title="Permalink to this headline">¶</a></h2>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.6.</span></p>
+</div>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.4.0.</span></p>
+</div>
+<p>If you want to draw rectangles use <a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.rectangle" title="wand.drawing.Drawing.rectangle"><tt class="xref py py-meth docutils literal"><span class="pre">rectangle()</span></tt></a>
+method.  It takes <tt class="docutils literal"><span class="pre">left</span></tt>/<tt class="docutils literal"><span class="pre">top</span></tt> coordinate, and <tt class="docutils literal"><span class="pre">right</span></tt>/<tt class="docutils literal"><span class="pre">bottom</span></tt>
+coordinate, or <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt>.  For example, the following code
+draws a square on the <tt class="docutils literal"><span class="pre">image</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mi">40</span><span class="p">,</span> <span class="n">bottom</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Or using <tt class="docutils literal"><span class="pre">width</span></tt> and <tt class="docutils literal"><span class="pre">height</span></tt> instead of <tt class="docutils literal"><span class="pre">right</span></tt> and <tt class="docutils literal"><span class="pre">bottom</span></tt>:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Support for rounded corners was added in version 0.4.0. The <tt class="docutils literal"><span class="pre">radius</span></tt> argument
+sets corner rounding.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">radius</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Both horizontal &amp; vertical can be set independently with
+<tt class="docutils literal"><span class="pre">xradius</span></tt> &amp; <tt class="docutils literal"><span class="pre">yradius</span></tt> respectively.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">rectangle</span><span class="p">(</span><span class="n">left</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">xradius</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">yradius</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>Note that the stoke and the fill are determined by the following properties:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_color" title="wand.drawing.Drawing.stroke_color"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_dash_array" title="wand.drawing.Drawing.stroke_dash_array"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_array</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_dash_offset" title="wand.drawing.Drawing.stroke_dash_offset"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_dash_offset</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_line_cap" title="wand.drawing.Drawing.stroke_line_cap"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_cap</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_line_join" title="wand.drawing.Drawing.stroke_line_join"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_line_join</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_miter_limit" title="wand.drawing.Drawing.stroke_miter_limit"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_miter_limit</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_opacity" title="wand.drawing.Drawing.stroke_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_opacity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.stroke_width" title="wand.drawing.Drawing.stroke_width"><tt class="xref py py-attr docutils literal"><span class="pre">stroke_width</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_color" title="wand.drawing.Drawing.fill_color"><tt class="xref py py-attr docutils literal"><span class="pre">fill_color</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_opacity" title="wand.drawing.Drawing.fill_opacity"><tt class="xref py py-attr docutils literal"><span class="pre">fill_opacity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.fill_rule" title="wand.drawing.Drawing.fill_rule"><tt class="xref py py-attr docutils literal"><span class="pre">fill_rule</span></tt></a></li>
+</ul>
+</div>
+<div class="section" id="texts">
+<span id="draw-texts"></span><h2>Texts<a class="headerlink" href="#texts" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing" title="wand.drawing.Drawing"><tt class="xref py py-class docutils literal"><span class="pre">Drawing</span></tt></a> object can write texts as well using its
+<a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text" title="wand.drawing.Drawing.text"><tt class="xref py py-meth docutils literal"><span class="pre">text()</span></tt></a> method.  It takes <tt class="docutils literal"><span class="pre">x</span></tt> and <tt class="docutils literal"><span class="pre">y</span></tt>
+coordinates to be drawn and a string to write:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="n">draw</span><span class="o">.</span><span class="n">font</span> <span class="o">=</span> <span class="s">&#39;wandtests/assets/League_Gothic.otf&#39;</span>
+<span class="n">draw</span><span class="o">.</span><span class="n">font_size</span> <span class="o">=</span> <span class="mi">40</span>
+<span class="n">draw</span><span class="o">.</span><span class="n">text</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">width</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">image</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s">&#39;Hello, world!&#39;</span><span class="p">)</span>
+<span class="n">draw</span><span class="p">(</span><span class="n">image</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>As the above code shows you can adjust several settings before writing texts:</p>
+<ul class="simple">
+<li><tt class="xref py py-attr docutils literal"><span class="pre">font</span></tt></li>
+<li><tt class="xref py py-attr docutils literal"><span class="pre">font_family</span></tt></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.font_resolution" title="wand.drawing.Drawing.font_resolution"><tt class="xref py py-attr docutils literal"><span class="pre">font_resolution</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.font_size" title="wand.drawing.Drawing.font_size"><tt class="xref py py-attr docutils literal"><span class="pre">font_size</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.font_stretch" title="wand.drawing.Drawing.font_stretch"><tt class="xref py py-attr docutils literal"><span class="pre">font_stretch</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.font_style" title="wand.drawing.Drawing.font_style"><tt class="xref py py-attr docutils literal"><span class="pre">font_style</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.font_weight" title="wand.drawing.Drawing.font_weight"><tt class="xref py py-attr docutils literal"><span class="pre">font_weight</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.gravity" title="wand.drawing.Drawing.gravity"><tt class="xref py py-attr docutils literal"><span class="pre">gravity</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_alignment" title="wand.drawing.Drawing.text_alignment"><tt class="xref py py-attr docutils literal"><span class="pre">text_alignment</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_antialias" title="wand.drawing.Drawing.text_antialias"><tt class="xref py py-attr docutils literal"><span class="pre">text_antialias</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_decoration" title="wand.drawing.Drawing.text_decoration"><tt class="xref py py-attr docutils literal"><span class="pre">text_decoration</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_direction" title="wand.drawing.Drawing.text_direction"><tt class="xref py py-attr docutils literal"><span class="pre">text_direction</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_interline_spacing" title="wand.drawing.Drawing.text_interline_spacing"><tt class="xref py py-attr docutils literal"><span class="pre">text_interline_spacing</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_interword_spacing" title="wand.drawing.Drawing.text_interword_spacing"><tt class="xref py py-attr docutils literal"><span class="pre">text_interword_spacing</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_kerning" title="wand.drawing.Drawing.text_kerning"><tt class="xref py py-attr docutils literal"><span class="pre">text_kerning</span></tt></a></li>
+<li><a class="reference internal" href="../wand/drawing.html#wand.drawing.Drawing.text_under_color" title="wand.drawing.Drawing.text_under_color"><tt class="xref py py-attr docutils literal"><span class="pre">text_under_color</span></tt></a></li>
+</ul>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Installation &mdash; Wand 0.4.0</title>
+    
+    <link rel="stylesheet" href="../_static/wand.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Wand 0.4.0" href="../index.html" />
+    <link rel="next" title="Reading images" href="read.html" />
+    <link rel="prev" title="What’s new in Wand 0.4?" href="../whatsnew/0.4.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="read.html" title="Reading images"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="../whatsnew/0.4.html" title="What’s new in Wand 0.4?"
+             accesskey="P">previous</a> |</li>
+        <li><a href="../index.html">Wand</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p>Wand itself can be installed from <a class="reference external" href="http://pypi.python.org/pypi/Wand">PyPI</a> using <strong class="program">easy_install</strong> or
+<strong class="program">pip</strong>:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> easy_install Wand  <span class="c"># or</span>
+<span class="gp">$</span> pip install Wand
+</pre></div>
+</div>
+<p>Wand is a Python binding of <a class="reference external" href="http://www.imagemagick.org/">ImageMagick</a>, so you have to install it as well:</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-imagemagick-debian"><em>Debian/Ubuntu</em></a></li>
+<li><a class="reference internal" href="#install-imagemagick-redhat"><em>Fedora/CentOS</em></a></li>
+<li><a class="reference internal" href="#install-imagemagick-mac"><em>Mac</em></a></li>
+<li><a class="reference internal" href="#install-imagemagick-windows"><em>Windows</em></a></li>
+</ul>
+<p>Or you can simply install Wand and its entire dependencies using the package
+manager of your system (it&#8217;s way convenient but the version might be outdated):</p>
+<ul class="simple">
+<li><a class="reference internal" href="#install-wand-debian"><em>Debian/Ubuntu</em></a></li>
+<li><a class="reference internal" href="#install-wand-freebsd"><em>FreeBSD</em></a></li>
+</ul>
+<div class="section" id="install-imagemagick-on-debian-ubuntu">
+<span id="install-imagemagick-debian"></span><h2>Install ImageMagick on Debian/Ubuntu<a class="headerlink" href="#install-imagemagick-on-debian-ubuntu" title="Permalink to this headline">¶</a></h2>
+<p>If you&#8217;re using Linux distributions based on Debian like Ubuntu, it can be
+easily installed using APT:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> sudo apt-get install libmagickwand-dev
+</pre></div>
+</div>
+<p>If you need SVG, WMF, OpenEXR, DjVu, and Graphviz support you have to install
+<tt class="docutils literal"><span class="pre">libmagickcore5-extra</span></tt> as well:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> sudo apt-get install libmagickcore5-extra
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-imagemagick-on-fedora-centos">
+<span id="install-imagemagick-redhat"></span><h2>Install ImageMagick on Fedora/CentOS<a class="headerlink" href="#install-imagemagick-on-fedora-centos" title="Permalink to this headline">¶</a></h2>
+<p>If you&#8217;re using Linux distributions based on Redhat like Fedora or CentOS,
+it can be installed using Yum:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> yum update
+<span class="gp">$</span> yum install ImageMagick-devel
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-imagemagick-on-mac">
+<span id="install-imagemagick-mac"></span><h2>Install ImageMagick on Mac<a class="headerlink" href="#install-imagemagick-on-mac" title="Permalink to this headline">¶</a></h2>
+<p>You need one of <a class="reference external" href="http://mxcl.github.com/homebrew/">Homebrew</a> or <a class="reference external" href="http://www.macports.org/">MacPorts</a> to install ImageMagick.</p>
+<dl class="docutils">
+<dt>Homebrew</dt>
+<dd><div class="first highlight-console"><div class="highlight"><pre><span class="gp">$</span> brew install imagemagick
+</pre></div>
+</div>
+<p>If <a class="reference internal" href="resizecrop.html#seam-carving"><em>seam carving</em></a> (<a class="reference internal" href="../wand/image.html#wand.image.BaseImage.liquid_rescale" title="wand.image.BaseImage.liquid_rescale"><tt class="xref py py-meth docutils literal"><span class="pre">Image.liquid_rescale()</span></tt></a>) is needed you have install
+<a class="reference external" href="http://liblqr.wikidot.com/">liblqr</a> as well:</p>
+<div class="last highlight-console"><div class="highlight"><pre><span class="gp">$</span> brew install imagemagick --with-liblqr
+</pre></div>
+</div>
+</dd>
+<dt>MacPorts</dt>
+<dd><div class="first highlight-console"><div class="highlight"><pre><span class="gp">$</span> sudo port install imagemagick
+</pre></div>
+</div>
+<p>If your Python in not installed using MacPorts, you have to export
+<span class="target" id="index-0"></span><tt class="xref std std-envvar docutils literal"><span class="pre">MAGICK_HOME</span></tt> path as well.  Because Python that is not installed
+using MacPorts doesn&#8217;t look up <tt class="file docutils literal"><span class="pre">/opt/local</span></tt>, the default path prefix
+of MacPorts packages.</p>
+<div class="last highlight-console"><div class="highlight"><pre><span class="gp">$</span> <span class="nb">export </span><span class="nv">MAGICK_HOME</span><span class="o">=</span>/opt/local
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="install-imagemagick-on-windows">
+<span id="install-imagemagick-windows"></span><h2>Install ImageMagick on Windows<a class="headerlink" href="#install-imagemagick-on-windows" title="Permalink to this headline">¶</a></h2>
+<p>You could build ImageMagick by yourself, but it requires a build tool chain
+like Visual Studio to compile it.  The easiest way is simply downloading
+a prebuilt binary of ImageMagick for your architecture (<tt class="docutils literal"><span class="pre">win32</span></tt> or
+<tt class="docutils literal"><span class="pre">win64</span></tt>).</p>
+<p>You can download it from the following link:</p>
+<p><a class="reference external" href="http://www.imagemagick.org/download/binaries/">http://www.imagemagick.org/download/binaries/</a></p>
+<p>Choose a binary for your architecture:</p>
+<dl class="docutils">
+<dt>Windows 32-bit</dt>
+<dd><a class="reference external" href="http://www.imagemagick.org/download/binaries/ImageMagick-6.9.0-4-Q16-x86-dll.exe">ImageMagick-6.9.0-4-Q16-x86-dll.exe</a></dd>
+<dt>Windows 64-bit</dt>
+<dd><a class="reference external" href="http://www.imagemagick.org/download/binaries/ImageMagick-6.9.0-4-Q16-x64-dll.exe">ImageMagick-6.9.0-4-Q16-x64-dll.exe</a></dd>
+</dl>
+<img alt="../_images/windows-setup.png" src="../_images/windows-setup.png" />
+<p>Note that you have to check <em class="guilabel">Install development headers and
+libraries for C and C++</em> to make Wand able to link to it.</p>
+<a class="reference internal image-reference" href="../_images/windows-envvar.png"><img alt="../_images/windows-envvar.png" src="../_images/windows-envvar.png" style="width: 465px; height: 315px;" /></a>
+<p>Lastly you have to set <span class="target" id="index-1"></span><tt class="xref std std-envvar docutils literal"><span class="pre">MAGICK_HOME</span></tt> environment variable to the path
+of ImageMagick (e.g. <tt class="file docutils literal"><span class="pre">C:\Program</span> <span class="pre">Files\ImageMagick-6.7.7-Q16</span></tt>).
+You can set it in <em class="menuselection">Computer ‣ Properties ‣
+Advanced system settings ‣ Advanced ‣ Enviro<span class="accelerator">n</span>ment Variables...</em>.</p>
+</div>
+<div class="section" id="install-wand-on-debian-ubuntu">
+<span id="install-wand-debian"></span><h2>Install Wand on Debian/Ubuntu<a class="headerlink" href="#install-wand-on-debian-ubuntu" title="Permalink to this headline">¶</a></h2>
+<p>Wand itself is already packaged in Debian/Ubuntu APT repository: <a class="reference external" href="http://packages.debian.org/sid/python-wand">python-wand</a>.
+You can install it using <strong class="program">apt-get</strong> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> sudo apt-get install python-wand
+</pre></div>
+</div>
+</div>
+<div class="section" id="install-wand-on-freebsd">
+<span id="install-wand-freebsd"></span><h2>Install Wand on FreeBSD<a class="headerlink" href="#install-wand-on-freebsd" title="Permalink to this headline">¶</a></h2>
+<p>Wand itself is already packaged in FreeBSD ports collection: <a class="reference external" href="http://www.freebsd.org/cgi/cvsweb.cgi/ports/graphics/py-wand/">py-wand</a>.
+You can install it using <strong class="program">pkg_add</strong> command:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> pkg_add -r py-wand
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>

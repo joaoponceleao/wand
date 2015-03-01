@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type"/>
+<title>wand.version — Version data — Wand 0.4.0</title>
+<link href="../_static/wand.css" rel="stylesheet" type="text/css"/>
+<link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+<script src="../_static/jquery.js" type="text/javascript"></script>
+<script src="../_static/underscore.js" type="text/javascript"></script>
+<script src="../_static/doctools.js" type="text/javascript"></script>
+<link href="../index.html" rel="top" title="Wand 0.4.0"/>
+<link href="../wand.html" rel="up" title="wand — Simple MagickWand API binding for Python"/>
+<link href="display.html" rel="prev" title="wand.display — Displaying images"/>
+<link href="../_static/small_flask.css" media="only screen and (max-device-width: 480px)" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+<div class="related">
+<h3>Navigation</h3>
+<ul>
+<li class="right" style="margin-right: 10px">
+<a accesskey="I" href="../genindex.html" title="General Index">index</a></li>
+<li class="right">
+<a href="../py-modindex.html" title="Python Module Index">modules</a> |</li>
+<li class="right">
+<a accesskey="P" href="display.html" title="wand.display — Displaying images">previous</a> |</li>
+<li><a href="../index.html">Wand</a> »</li>
+<li><a accesskey="U" href="../wand.html"><tt class="docutils literal"><span class="pre">wand</span></tt> — Simple MagickWand API binding for Python</a> »</li>
+</ul>
+</div>
+<div class="document">
+<div class="documentwrapper">
+<div class="body">
+<span class="target" id="module-wand.version"></span><div class="section" id="wand-version-version-data"><a name="//apple_ref/cpp/Module/wand.version"></a>
+<h1><a class="reference internal" href="#module-wand.version" title="wand.version"><tt class="xref py py-mod docutils literal"><span class="pre">wand.version</span></tt></a> — Version data<a class="headerlink" href="#wand-version-version-data" title="Permalink to this headline">¶</a></h1>
+<p>You can find the current version in the command line interface:</p>
+<div class="highlight-console"><div class="highlight"><pre><span class="gp">$</span> python -m wand.version
+<span class="go">0.4.0</span>
+<span class="gp">$</span> python -m wand.version --verbose
+<span class="go">Wand 0.4.0</span>
+<span class="go">ImageMagick 6.7.7-6 2012-06-03 Q16 http://www.imagemagick.org</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.0: </span>The command line interface.</p>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.2: </span>The <tt class="docutils literal"><span class="pre">--verbose</span></tt>/<tt class="docutils literal"><span class="pre">-v</span></tt> option which also prints ImageMagick library
+version for CLI.</p>
+</div>
+<dl class="data">
+<dt id="wand.version.VERSION"><a name="//apple_ref/cpp/Value/wand.version.VERSION"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">VERSION</tt><em class="property"> = '0.4.0'</em><a class="headerlink" href="#wand.version.VERSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The version string e.g. <tt class="docutils literal"><span class="pre">'0.1.2'</span></tt>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.1.9: </span>Becomes string.  (It was <tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt> before.)</p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.VERSION_INFO"><a name="//apple_ref/cpp/Value/wand.version.VERSION_INFO"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">VERSION_INFO</tt><em class="property"> = (0, 4, 0)</em><a class="headerlink" href="#wand.version.VERSION_INFO" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt>) The version tuple e.g. <tt class="docutils literal"><span class="pre">(0,</span> <span class="pre">1,</span> <span class="pre">2)</span></tt>.</p>
+<div class="versionchanged">
+<p><span class="versionmodified">Changed in version 0.1.9: </span>Becomes <tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt>.  (It was string before.)</p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.MAGICK_VERSION"><a name="//apple_ref/cpp/Value/wand.version.MAGICK_VERSION"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">MAGICK_VERSION</tt><em class="property"> = 'ImageMagick 6.9.0-3 Q16 x86_64 2015-01-09 http://www.imagemagick.org'</em><a class="headerlink" href="#wand.version.MAGICK_VERSION" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The version string of the linked ImageMagick
+library.  The exactly same string to the result of
+<tt class="xref c c-func docutils literal"><span class="pre">GetMagickVersion()</span></tt> function.</p>
+<p>Example:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="s">'ImageMagick 6.7.7-6 2012-06-03 Q16 http://www.imagemagick.org'</span>
+</pre></div>
+</div>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.1.</span></p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.MAGICK_VERSION_INFO"><a name="//apple_ref/cpp/Value/wand.version.MAGICK_VERSION_INFO"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">MAGICK_VERSION_INFO</tt><em class="property"> = (6, 9, 0, 3)</em><a class="headerlink" href="#wand.version.MAGICK_VERSION_INFO" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">tuple</span></tt>) The version tuple e.g. <tt class="docutils literal"><span class="pre">(6,</span> <span class="pre">7,</span> <span class="pre">7,</span> <span class="pre">6)</span></tt> of
+<a class="reference internal" href="#wand.version.MAGICK_VERSION" title="wand.version.MAGICK_VERSION"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_VERSION</span></tt></a>.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.1.</span></p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.MAGICK_VERSION_NUMBER"><a name="//apple_ref/cpp/Value/wand.version.MAGICK_VERSION_NUMBER"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">MAGICK_VERSION_NUMBER</tt><em class="property"> = 1680L</em><a class="headerlink" href="#wand.version.MAGICK_VERSION_NUMBER" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) The version number of the linked
+ImageMagick library.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.1.</span></p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.MAGICK_RELEASE_DATE"><a name="//apple_ref/cpp/Value/wand.version.MAGICK_RELEASE_DATE"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">MAGICK_RELEASE_DATE</tt><em class="property"> = datetime.date(2015, 1, 9)</em><a class="headerlink" href="#wand.version.MAGICK_RELEASE_DATE" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<tt class="xref py py-class docutils literal"><span class="pre">basestring</span></tt>) The date string e.g. <tt class="docutils literal"><span class="pre">'2012-06-03'</span></tt> of
+<a class="reference internal" href="#wand.version.MAGICK_RELEASE_DATE_STRING" title="wand.version.MAGICK_RELEASE_DATE_STRING"><tt class="xref py py-const docutils literal"><span class="pre">MAGICK_RELEASE_DATE_STRING</span></tt></a>.  This value is the exactly same
+string to the result of <tt class="xref c c-func docutils literal"><span class="pre">GetMagickReleaseDate()</span></tt> function.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.1.</span></p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.MAGICK_RELEASE_DATE_STRING"><a name="//apple_ref/cpp/Value/wand.version.MAGICK_RELEASE_DATE_STRING"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">MAGICK_RELEASE_DATE_STRING</tt><em class="property"> = '2015-01-09'</em><a class="headerlink" href="#wand.version.MAGICK_RELEASE_DATE_STRING" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/datetime.html#datetime.date" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">datetime.date</span></tt></a>) The release date of the linked ImageMagick
+library.  The same to the result of <tt class="xref c c-func docutils literal"><span class="pre">GetMagickReleaseDate()</span></tt>
+function.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.2.1.</span></p>
+</div>
+</dd></dl>
+<dl class="data">
+<dt id="wand.version.QUANTUM_DEPTH"><a name="//apple_ref/cpp/Value/wand.version.QUANTUM_DEPTH"></a>
+<tt class="descclassname">wand.version.</tt><tt class="descname">QUANTUM_DEPTH</tt><em class="property"> = 16L</em><a class="headerlink" href="#wand.version.QUANTUM_DEPTH" title="Permalink to this definition">¶</a></dt>
+<dd><p>(<a class="reference external" href="http://docs.python.org/library/numbers.html#numbers.Integral" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">numbers.Integral</span></tt></a>) The quantum depth configuration of
+the linked ImageMagick library.  One of 8, 16, 32, or 64.</p>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 0.3.0.</span></p>
+</div>
+</dd></dl>
+</div>
+</div>
+</div>
+<div class="clearer"></div>
+</div>
+<div class="footer">
+    © Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+</body>
+</html>

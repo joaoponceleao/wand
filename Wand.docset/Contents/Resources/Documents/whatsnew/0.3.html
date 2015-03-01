@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>What’s new in Wand 0.3? &mdash; Wand 0.4.0</title>
+    
+    <link rel="stylesheet" href="../_static/wand.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '0.4.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <link rel="top" title="Wand 0.4.0" href="../index.html" />
+   
+  
+  <link media="only screen and (max-device-width: 480px)" href="../_static/small_flask.css" type= "text/css" rel="stylesheet" />
+
+  </head>
+  <body>
+  
+  
+
+    <div class="related">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="../genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="../py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li><a href="../index.html">Wand</a> &raquo;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+          <div class="body">
+            
+  <div class="section" id="what-s-new-in-wand-0-3">
+<h1>What&#8217;s new in Wand 0.3?<a class="headerlink" href="#what-s-new-in-wand-0-3" title="Permalink to this headline">¶</a></h1>
+<p>This guide doesn&#8217;t cover all changes in 0.3.  See also the full list of
+changes in <a class="reference internal" href="../changes.html#changelog-0-3-0"><em>Version 0.3.0</em></a>.</p>
+<div class="section" id="python-3-support">
+<h2>Python 3 support<a class="headerlink" href="#python-3-support" title="Permalink to this headline">¶</a></h2>
+<p>Wand finally becomes to support Python 3, the future of Python.  It actually
+doesn&#8217;t cover all Python 3 versions, but the most two recent versions, 3.2 and
+3.3, are supported.  We still support Python 2.6, 2.7, and PyPy as well,
+so there&#8217;s no dropped compatibility.</p>
+<div class="admonition seealso">
+<p class="first admonition-title">See also</p>
+<dl class="last docutils">
+<dt><a class="reference external" href="http://librelist.com/browser/wand/2013/6/6/wand-now-works-on-python-3-2-and-3-3/">Wand now works on Python 3.2 and 3.3</a></dt>
+<dd>The announcement about this on the mailing list.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="sequence">
+<h2>Sequence<a class="headerlink" href="#sequence" title="Permalink to this headline">¶</a></h2>
+<p>Wand now adds supports to sequential images like animated <em class="mimetype">image/gif</em>
+images and <em class="mimetype">image/ico</em> images that contains multiple icons.
+To distinguish between each single image and the container image,
+newly introduced class <a class="reference internal" href="../wand/sequence.html#wand.sequence.SingleImage" title="wand.sequence.SingleImage"><tt class="xref py py-class docutils literal"><span class="pre">SingleImage</span></tt></a> has been added.
+The most of operations and properties are commonly available for both types,
+<a class="reference internal" href="../wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> and <a class="reference internal" href="../wand/sequence.html#wand.sequence.SingleImage" title="wand.sequence.SingleImage"><tt class="xref py py-class docutils literal"><span class="pre">SingleImage</span></tt></a>, and these
+are defined by their common superclass, <a class="reference internal" href="../wand/image.html#wand.image.BaseImage" title="wand.image.BaseImage"><tt class="xref py py-class docutils literal"><span class="pre">BaseImage</span></tt></a>.</p>
+<p>So every <a class="reference internal" href="../wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-class docutils literal"><span class="pre">Image</span></tt></a> object now has <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.sequence" title="wand.image.BaseImage.sequence"><tt class="xref py py-attr docutils literal"><span class="pre">sequence</span></tt></a> attribute which is list-like.  It implements
+<a class="reference external" href="http://docs.python.org/library/collections.html#collections.MutableSequence" title="(in Python v2.7)"><tt class="xref py py-class docutils literal"><span class="pre">collections.MutableSequence</span></tt></a> protocol.  That means you can pass it
+into <a class="reference external" href="http://docs.python.org/reference/compound_stmts.html#for" title="(in Python v2.7)"><tt class="xref std std-keyword docutils literal"><span class="pre">for</span></tt></a> statement, get an item by index from it, slice it,
+call <a class="reference external" href="http://docs.python.org/library/functions.html#len" title="(in Python v2.7)"><tt class="xref py py-func docutils literal"><span class="pre">len()</span></tt></a> for it, or <a class="reference external" href="http://docs.python.org/reference/simple_stmts.html#del" title="(in Python v2.7)"><tt class="xref std std-keyword docutils literal"><span class="pre">del</span></tt></a> an item of it by index.  Every item
+inside it is a <a class="reference internal" href="../wand/sequence.html#wand.sequence.SingleImage" title="wand.sequence.SingleImage"><tt class="xref py py-class docutils literal"><span class="pre">SingleImage</span></tt></a> instance.</p>
+<p>The following example shows you how to determine the largest icon in
+a <em class="mimetype">image/ico</em> file:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="kn">import</span> <span class="nn">urllib2</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s">&#39;https://github.com/favicon.ico&#39;</span><span class="p">))</span> <span class="k">as</span> <span class="n">ico</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="nb">max</span><span class="p">(</span><span class="n">ico</span><span class="o">.</span><span class="n">sequence</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">i</span><span class="p">:</span> <span class="n">i</span><span class="o">.</span><span class="n">width</span> <span class="o">*</span> <span class="n">i</span><span class="o">.</span><span class="n">height</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">&lt;wand.sequence.SingleImage: 80d158d (32x32)&gt;</span>
+</pre></div>
+</div>
+<p>This feature was initially proposed by Michael Elovskikh (<a class="reference external" href="https://github.com/dahlia/wand/issues/34">#34</a>),
+and then he also did initial work on this (<a class="reference external" href="https://github.com/dahlia/wand/issues/39">#39</a>).  Andrey Antukh
+then improved its API (<a class="reference external" href="https://github.com/dahlia/wand/issues/66">#66</a>).  Bear Dong and Taeho Kim did additional
+efforts for issues related to animated <em class="mimetype">image/gif</em> images
+(<a class="reference external" href="https://github.com/dahlia/wand/issues/88">#88</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/103">#103</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/112">#112</a>).</p>
+<p>See also the guide for sequence as well: <a class="reference internal" href="../guide/sequence.html"><em>Sequence</em></a>.</p>
+</div>
+<div class="section" id="drawing">
+<h2>Drawing<a class="headerlink" href="#drawing" title="Permalink to this headline">¶</a></h2>
+<p>Wand 0.3 provides basic facilities to draw <a class="reference internal" href="../guide/draw.html#draw-lines"><em>Lines</em></a> or
+<a class="reference internal" href="../guide/draw.html#draw-texts"><em>Texts</em></a>.</p>
+<p>The following example code writes &#8220;Wand&#8221; to the transparent background
+using <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.caption" title="wand.image.BaseImage.caption"><tt class="xref py py-meth docutils literal"><span class="pre">caption()</span></tt></a> method:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">wand.font</span> <span class="kn">import</span> <span class="n">Font</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">font</span> <span class="o">=</span> <span class="n">Font</span><span class="p">(</span><span class="n">path</span><span class="o">=</span><span class="s">&#39;tests/assets/League_Gothic.otf&#39;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">64</span><span class="p">)</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">width</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">150</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">image</span><span class="o">.</span><span class="n">caption</span><span class="p">(</span><span class="s">&#39;Wand&#39;</span><span class="p">,</span> <span class="n">left</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">top</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">490</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="mi">140</span><span class="p">,</span> <span class="n">font</span><span class="o">=</span><span class="n">font</span><span class="p">)</span>
+<span class="gp">... </span>    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;caption-result.png&#39;</span><span class="p">)</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<img alt="caption-result.png" src="../_images/caption-result.png" />
+<p>Adrian Jung and did the most of work for this (<a class="reference external" href="https://github.com/dahlia/wand/issues/64">#64</a>).
+Cha, Hojeong added higher-level APIs on this and more text drawing APIs
+(<a class="reference external" href="https://github.com/dahlia/wand/issues/69">#69</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/71">#71</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/74">#74</a>).</p>
+</div>
+<div class="section" id="exif">
+<h2>EXIF<a class="headerlink" href="#exif" title="Permalink to this headline">¶</a></h2>
+<p>Wand now can read EXIF metadata from images through <a class="reference internal" href="../wand/image.html#wand.image.Image" title="wand.image.Image"><tt class="xref py py-attr docutils literal"><span class="pre">metadata</span></tt></a> property which is a mapping:</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">print_function</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://farm9.staticflickr.com/8282/7874109806_3fe0080ae4_o_d.jpg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">i</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">i</span><span class="o">.</span><span class="n">metadata</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="gp">... </span>        <span class="k">if</span> <span class="n">key</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s">&#39;exif:&#39;</span><span class="p">):</span>
+<span class="gp">... </span>            <span class="k">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span>
+<span class="gp">...</span>
+<span class="go">exif:ApertureValue 8/1</span>
+<span class="go">exif:CustomRendered 0</span>
+<span class="go">exif:DateTime 2012:08:27 18:42:15</span>
+<span class="go">exif:DateTimeDigitized 2012:08:17 02:33:36</span>
+<span class="go">exif:DateTimeOriginal 2012:08:17 02:33:36</span>
+<span class="go">exif:ExifOffset 204</span>
+<span class="go">exif:ExifVersion 48, 50, 50, 49</span>
+<span class="go">exif:ExposureBiasValue 0/1</span>
+<span class="go">exif:ExposureMode 1</span>
+<span class="go">exif:ExposureProgram 1</span>
+<span class="go">exif:ExposureTime 1/50</span>
+<span class="gp">...</span>
+</pre></div>
+</div>
+<p>Thanks for Michael Elovskikh who worked on this (<a class="reference external" href="https://github.com/dahlia/wand/issues/25">#25</a>, <a class="reference external" href="https://github.com/dahlia/wand/issues/56">#56</a>).</p>
+<p>See also the guide for this as well: <a class="reference internal" href="../guide/exif.html"><em>Reading EXIF</em></a>.</p>
+</div>
+<div class="section" id="seam-carving">
+<h2>Seam carving<a class="headerlink" href="#seam-carving" title="Permalink to this headline">¶</a></h2>
+<p>ImageMagick optionally provides <a class="reference external" href="http://en.wikipedia.org/wiki/Seam_carving">seam carving</a> (also known as liquid rescaling
+or content-aware resizing) through <tt class="xref c c-func docutils literal"><span class="pre">MagickLiquidRescaleImage()</span></tt>
+function if it&#8217;s properly configured <tt class="docutils literal"><span class="pre">--with-lqr</span></tt>.  It makes you able to
+magically resize images without distortion.</p>
+<p>Wand 0.3 becomes to provide a simple method <tt class="xref py py-meth docutils literal"><span class="pre">Image.liquid_rescale()</span></tt> which binds this API.</p>
+<p>You can find more detail examples in its guide: <a class="reference internal" href="../guide/resizecrop.html#seam-carving"><em>Seam carving (also known as content-aware resizing)</em></a>.</p>
+</div>
+<div class="section" id="channels">
+<h2>Channels<a class="headerlink" href="#channels" title="Permalink to this headline">¶</a></h2>
+<p>Some channel-related APIs like <a class="reference internal" href="../wand/image.html#wand.image.Image.channel_images" title="wand.image.Image.channel_images"><tt class="xref py py-attr docutils literal"><span class="pre">wand.image.Image.channel_images</span></tt></a>,
+<a class="reference internal" href="../wand/image.html#wand.image.Image.channel_depths" title="wand.image.Image.channel_depths"><tt class="xref py py-attr docutils literal"><span class="pre">channel_depths</span></tt></a>, and
+<a class="reference internal" href="../wand/image.html#wand.image.BaseImage.composite_channel" title="wand.image.BaseImage.composite_channel"><tt class="xref py py-meth docutils literal"><span class="pre">composite_channel()</span></tt></a> are added in Wand 0.3.</p>
+<p>The following example makes the overlayed image (second,
+<tt class="file docutils literal"><span class="pre">composite-channel-result.jpg</span></tt>) from the original image (first,
+<tt class="file docutils literal"><span class="pre">composite-channel.jpg</span></tt>):</p>
+<a class="reference internal image-reference" href="../_images/composite-channel.jpg"><img alt="composite-channel.jpg" src="../_images/composite-channel.jpg" style="width: 320px; height: 213px;" /></a>
+<a class="reference internal image-reference" href="../_images/composite-channel-result.jpg"><img alt="composite-channel-result.jpg" src="../_images/composite-channel-result.jpg" style="width: 320px; height: 213px;" /></a>
+<div class="highlight-python"><div class="highlight"><pre><span class="kn">import</span> <span class="nn">shutil</span>
+<span class="kn">import</span> <span class="nn">urllib2</span>
+
+<span class="kn">from</span> <span class="nn">wand.image</span> <span class="kn">import</span> <span class="n">Image</span>
+<span class="kn">from</span> <span class="nn">wand.color</span> <span class="kn">import</span> <span class="n">Color</span>
+
+
+<span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://farm6.staticflickr.com/5271/5836279075_c3f8226bc1_z.jpg&#39;</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s">&#39;composite-channel.jpg&#39;</span><span class="p">,</span> <span class="s">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+    <span class="n">shutil</span><span class="o">.</span><span class="n">copyfileobj</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">u</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;composite-channel.jpg&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+    <span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="n">background</span><span class="o">=</span><span class="n">Color</span><span class="p">(</span><span class="s">&#39;black&#39;</span><span class="p">),</span>
+               <span class="n">width</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">width</span><span class="p">,</span>
+               <span class="n">height</span><span class="o">=</span><span class="n">image</span><span class="o">.</span><span class="n">height</span> <span class="o">/</span> <span class="mi">3</span><span class="p">)</span> <span class="k">as</span> <span class="n">bar</span><span class="p">:</span>
+        <span class="n">image</span><span class="o">.</span><span class="n">composite_channel</span><span class="p">(</span>
+            <span class="n">channel</span><span class="o">=</span><span class="s">&#39;all_channels&#39;</span><span class="p">,</span>
+            <span class="n">image</span><span class="o">=</span><span class="n">bar</span><span class="p">,</span>
+            <span class="n">operator</span><span class="o">=</span><span class="s">&#39;overlay&#39;</span><span class="p">,</span>
+            <span class="n">left</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span>
+            <span class="n">top</span><span class="o">=</span><span class="p">(</span><span class="n">image</span><span class="o">.</span><span class="n">height</span><span class="o">-</span> <span class="n">bar</span><span class="o">.</span><span class="n">height</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="p">)</span>
+    <span class="n">image</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">filename</span><span class="o">=</span><span class="s">&#39;composite-channel-result.jpg&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The image <tt class="file docutils literal"><span class="pre">composite-channel.jpg</span></tt> used in the above example
+is taken by <a class="reference external" href="http://saturatedhigh.tumblr.com/">Ejja Pahlevi</a> and licensed under <a class="reference external" href="http://creativecommons.org/licenses/by/2.0/">CC-BY-2.0</a>.
+It can be found the <a class="reference external" href="http://www.flickr.com/photos/61808613&#64;N06/5836279075/">original photography from Flickr</a>.</p>
+</div>
+</div>
+<div class="section" id="histogram">
+<h2>Histogram<a class="headerlink" href="#histogram" title="Permalink to this headline">¶</a></h2>
+<p>Every image now has <a class="reference internal" href="../wand/image.html#wand.image.BaseImage.histogram" title="wand.image.BaseImage.histogram"><tt class="xref py py-attr docutils literal"><span class="pre">histogram</span></tt></a> attribute,
+which is dictionary-like.  Its keys are colors that used once or more in
+the image, and values are are the numbers of the pixels.</p>
+<p>For example, simply get <tt class="xref py py-meth docutils literal"><span class="pre">keys()</span></tt> of
+<a class="reference internal" href="../wand/image.html#wand.image.BaseImage.histogram" title="wand.image.BaseImage.histogram"><tt class="xref py py-attr docutils literal"><span class="pre">histogram</span></tt></a> if you need its palette.</p>
+<div class="highlight-python"><div class="highlight"><pre><span class="gp">&gt;&gt;&gt; </span><span class="n">url</span> <span class="o">=</span> <span class="s">&#39;http://farm7.staticflickr.com/6145/5982384872_cb1e01004e_n.jpg&#39;</span>
+<span class="gp">&gt;&gt;&gt; </span><span class="k">with</span> <span class="n">Image</span><span class="p">(</span><span class="nb">file</span><span class="o">=</span><span class="n">urllib2</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="n">url</span><span class="p">))</span> <span class="k">as</span> <span class="n">image</span><span class="p">:</span>
+<span class="gp">... </span>    <span class="n">palette</span> <span class="o">=</span> <span class="n">image</span><span class="o">.</span><span class="n">histogram</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+          </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+  <div class="footer">
+    &copy; Copyright 2015, Hong Minhee.
+    Created using <a href="http://sphinx.pocoo.org/">Sphinx</a>.
+  </div>
+  
+  </body>
+</html>
